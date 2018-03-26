@@ -177,6 +177,31 @@ public class KassapaateTest {
         assertEquals(paate.kassassaRahaa(),100000);
     }
     
+    @Test
+    public void LataaRahaaKortilleKortinRahamaara() {
+        paate.lataaRahaaKortille(kortti1, 100);
+        assertEquals(kortti1.saldo(),600);
+    }
+    
+    @Test
+    public void LataaRahaaKortilleNegatiivinenSummaKortti() {
+        paate.lataaRahaaKortille(kortti1, -100);
+        assertEquals(kortti1.saldo(),500);
+    }
+    
+    @Test
+    public void LataaRahaaKortilleNegatiivinenSummaKassa() {
+        paate.lataaRahaaKortille(kortti1, -100);
+        assertEquals(paate.kassassaRahaa(),100000);
+    }
+    
+    @Test
+    public void LataaRahaaKortilleKassanRahamaara() {
+        paate.lataaRahaaKortille(kortti1, 100);
+        assertEquals(paate.kassassaRahaa(),100100);
+    }
+    
+    
     
     
     
