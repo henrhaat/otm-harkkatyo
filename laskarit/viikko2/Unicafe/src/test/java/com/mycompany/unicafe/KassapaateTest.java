@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Kassapaatetest {
+public class KassapaateTest {
     
     Kassapaate paate;
     Maksukortti kortti1;
