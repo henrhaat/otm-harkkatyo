@@ -1,3 +1,5 @@
+package sudoku;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,7 +31,7 @@ public class SudokuTest {
     }
     
     
-    public void cellPassesRules(int n) {
+    public void boxPassesRules(int n) {
         setUp();
         int[] numbers = sudoku.getNumbers1();
         
@@ -48,9 +50,9 @@ public class SudokuTest {
     }
     
     @Test
-    public void allCellsPassRules() {
+    public void allBoxesPassRules() {
         for (int i = 0; i < 9; i++) {
-            cellPassesRules(i);
+            boxPassesRules(i);
         }
     }
     
