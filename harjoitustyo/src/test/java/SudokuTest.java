@@ -29,9 +29,9 @@ public class SudokuTest {
     }
     
     
-    public void rowCorrect(int n) {
+    public void cellPassesRules(int n) {
         setUp();
-        int[][] numbers = sudoku.getNumbers();
+        int[] numbers = sudoku.getNumbers1();
         
         ArrayList<Integer> list1 = new ArrayList<>();
         ArrayList<Integer> list2 = new ArrayList<>();
@@ -40,7 +40,7 @@ public class SudokuTest {
             list1.add(i);
         }
         for(int i = 0; i < 9; i++) {
-            list2.add(numbers[n][i]);
+            list2.add(numbers[n*9 +i]);
         }
         Collections.sort(list2);
         
@@ -48,9 +48,9 @@ public class SudokuTest {
     }
     
     @Test
-    public void allRowsCorrect() {
+    public void allCellsPassRules() {
         for (int i = 0; i < 9; i++) {
-            rowCorrect(i);
+            cellPassesRules(i);
         }
     }
     
