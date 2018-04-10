@@ -12,11 +12,15 @@
 
 Testit suoritetaan hakemistossa *harjoitustyo* komennolla
 
-``` mvn test ```
+```
+mvn test 
+```
 
 Testikattavuusraportti suoritetaan hakemistossa *harjoitustyo* komennolla
 
-``` mvn test jacoco:report ```
+```
+mvn test jacoco:report 
+```
 
 Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/jacoco/index.html*
 
@@ -24,7 +28,9 @@ Kattavuusraporttia voi tarkastella avaamalla selaimella tiedosto *target/site/ja
 
 Hakemistossa *harjoitustyo* komento
 
-``` mvn package ```
+```
+mvn package 
+```
 
 generoi hakemistoon *target*  suoritettavan jar-tiedoston *Sudoku-1.0-SNAPSHOT.jar*
 
@@ -32,7 +38,9 @@ generoi hakemistoon *target*  suoritettavan jar-tiedoston *Sudoku-1.0-SNAPSHOT.j
 
 JavaDoc generoidaan hakemistossa *harjoitustyo* komennolla
 
-``` mvn javadoc:javadoc ```
+```
+mvn javadoc:javadoc 
+```
 
 JavaDocia voi tarkastella avaamalla selaimella tiedoston *target/site/apidocs/index.html* 
 
