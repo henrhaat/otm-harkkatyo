@@ -4,9 +4,9 @@
 
 [Käyttöohje](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kayttoohje.md)
 
-[Vaativuusmäärittely](https://github.com/henrhaat/otm-harkkatyo/blob/master/dokumentointi/vaativuusmaarittely.md)
+[Vaativuusmäärittely](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/vaativuusmaarittely.md)
 
-[Työaikakirjanpito](https://github.com/henrhaat/otm-harkkatyo/blob/master/dokumentointi/tuntikirjanpito.md)
+[Työaikakirjanpito](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/tuntikirjanpito.md)
 
 ## Komentorivitoiminnot
 
