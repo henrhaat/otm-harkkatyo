@@ -6,3 +6,4 @@ päivä | aika | mitä tein
 5.4 | 4 | Kertasin JFramea ja loin ensimmäisen sudokupohjan
 9.4 | 4 | Parantelin sudokupohjaa luomalla osan metodeista uusiksi
 10.4 | 2 | Parantelin dokumentaatiota
+16.4 | 3 | Lisäsin sudokuun "tarkista"-napin ja parantelin sovellusta
