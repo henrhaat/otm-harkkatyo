@@ -2,17 +2,17 @@
 package sudoku.ui;
 
 import java.util.Arrays;
-import sudoku.domain.Sudoku;
+import sudoku.dao.SudokuDao;
 
 
-public class SudokuUi{
+public class SudokuUi {
 
 
     public static void main(String[] args) {
-        Sudoku sudoku = new Sudoku();
-        sudoku.build();
+        SudokuDao sudokuDao = new SudokuDao();
+        sudokuDao.launch(0);
     }
     
-
+    
     
 }
