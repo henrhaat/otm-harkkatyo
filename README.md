@@ -8,6 +8,8 @@
 
 [Työaikakirjanpito](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/tuntikirjanpito.md)
 
+[Arkkitehtuuri](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
