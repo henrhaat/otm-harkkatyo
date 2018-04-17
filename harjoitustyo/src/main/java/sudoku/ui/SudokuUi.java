@@ -114,7 +114,7 @@ public class SudokuUi {
         } );
         checkFrame.setTitle("Result");
         checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
-        if (sudokudomain.getSudoku(n).checkIfCorrect(0)) { //                                       Muista muuttaa tämä
+        if (sudokudomain.checkIfCorrect(n)) {
             JTextField jtext = new JTextField("Correct!");
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
         } else {

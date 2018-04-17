@@ -24,25 +24,25 @@ import sudoku.dao.SudokuDao;
  */
 public class SudokuTest {
     
-    SudokuDao sudoku;
+    SudokuDao sudokuDao;
     
     public void setUp() {
-        sudoku = new SudokuDao();
+        sudokuDao = new SudokuDao();
     }
     
     
     public void boxPassesRules(int n) {
         setUp();
-        int[] numbers = sudoku.getNumbers1();
+        String[] numbers = sudokuDao.getNumbers();
         
-        ArrayList<Integer> list1 = new ArrayList<>();
-        ArrayList<Integer> list2 = new ArrayList<>();
+        ArrayList<String> list1 = new ArrayList<>();
+        ArrayList<String> list2 = new ArrayList<>();
         
         for(int i = 1; i < 10; i++) {
-            list1.add(i);
+            list1.add(i + "");
         }
         for(int i = 0; i < 9; i++) {
-            list2.add(numbers[n*9 +i]);
+            list2.add(numbers[n*9 +i] + "");
         }
         Collections.sort(list2);
         

@@ -30,14 +30,9 @@ public class SudokuDao extends JPanel {
         this.shown = puzzle.getShown(0);
         this.numbersString = puzzle.getNumbersString(0);
     }
-    public boolean checkIfCorrect(int n) {
-        
-        for (int i = 0; i < 81; i++) {
-            if (!jtfList.get(i).getText().equals(numbersString[i])) {
-                return false;
-            }
-        }
-        return true;
+    
+    public String[] getNumbers() {
+        return this.numbersString;
     }
 
     public JFrame getJFrame() {

@@ -21,6 +21,16 @@ public class Sudoku {
         su.start();
     }
     
+    public boolean checkIfCorrect(int n) {
+        
+        for (int i = 0; i < 81; i++) {
+            if (!sudoku.jtfList.get(i).getText().equals(sudoku.numbersString[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public SudokuDao getSudoku(int n) {
         return this.sudokulist.get(n);
     }
