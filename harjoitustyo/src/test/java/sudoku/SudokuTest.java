@@ -92,5 +92,20 @@ public class SudokuTest {
         assertEquals(Arrays.toString(numbersString), Arrays.toString(puzzle.getNumbersString(0)));
     }
     
+    @Test
+    public void getSudoku() {
+        setUp();
+        SudokuDao sudoku1 = sudoku.getSudokuDaoList().get(0);
+        
+        assertEquals(sudoku1, sudoku.getSudokuDao(0));
+    }
+    
+    @Test
+    public void getSudokuList() {
+        setUp();
+        List<SudokuDao> list = sudoku.sudokulist;
+        
+        assertEquals(list, sudoku.getSudokuDaoList());
+    }
 
 }

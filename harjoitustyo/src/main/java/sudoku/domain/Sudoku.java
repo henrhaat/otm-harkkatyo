@@ -31,7 +31,11 @@ public class Sudoku {
         return true;
     }
     
-    public SudokuDao getSudoku(int n) {
+    public SudokuDao getSudokuDao(int n) {
         return this.sudokulist.get(n);
+    }
+    
+    public List<SudokuDao> getSudokuDaoList() {
+        return this.sudokulist;
     }
 }
