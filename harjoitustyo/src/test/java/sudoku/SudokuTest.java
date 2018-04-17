@@ -15,7 +15,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import sudoku.domain.Sudoku;
+import sudoku.dao.SudokuDao;
 
 
 /**
@@ -24,10 +24,10 @@ import sudoku.domain.Sudoku;
  */
 public class SudokuTest {
     
-    Sudoku sudoku;
+    SudokuDao sudoku;
     
     public void setUp() {
-        sudoku = new Sudoku();
+        sudoku = new SudokuDao();
     }
     
     

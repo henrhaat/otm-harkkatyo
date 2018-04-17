@@ -6,12 +6,9 @@ import java.util.List;
 public class Puzzle {
 
     
-    private List<int[]> numberList;
     private List<boolean[]> shownList;
+    private List<String[]> numberList;
     
-    private final int[] numbers = {4,3,5,6,8,2,1,9,7,2,6,9,5,7,1,8,3,4,7,8,1,4,9,3,5,6,2,
-                                    8,2,6,3,7,4,9,5,1,1,9,5,6,8,2,7,4,3,3,4,7,9,1,5,6,2,8,
-                                    5,1,9,2,4,8,7,6,3,3,2,6,9,5,7,4,1,8,8,7,4,1,3,6,2,5,9};
     
     private final String[] numbersString = {"4","3","5","6","8","2","1","9","7","2","6","9","5","7","1","8","3","4","7","8","1","4","9","3","5","6","2",
                                             "8","2","6","3","7","4","9","5","1","1","9","5","6","8","2","7","4","3","3","4","7","9","1","5","6","2","8",
@@ -31,19 +28,15 @@ public class Puzzle {
     }
     
     private void setUp() {
-        this.numberList.add(numbers);
+        this.numberList.add(numbersString);
         this.shownList.add(shown);
     }
-    
-    public int[] getNumbers(int i) {
-        return this.numberList.get(i);
-    }
 
-    public boolean[] getShown(int i) {
-        return this.shownList.get(i);
+    public boolean[] getShown(int n) {
+        return this.shownList.get(n);
     }
     
-    public String[] getNumbersString(int i) {
-        return this.numbersString;
+    public String[] getNumbersString(int n) {
+        return this.numberList.get(n);
     }
 }
