@@ -24,7 +24,7 @@ public class Sudoku {
     public boolean checkIfCorrect(int n) {
         
         for (int i = 0; i < 81; i++) {
-            if (!sudoku.jtfList.get(i).getText().equals(sudoku.numbersString[i])) {
+            if (!(sudoku.jtfList.get(i).getText()).equals(puzzle.numbersString[i])) {
                 return false;
             }
         }
