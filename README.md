@@ -8,6 +8,8 @@
 
 [Työaikakirjanpito](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/tuntikirjanpito.md)
 
+[Arkkitehtuuri](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/arkkitehtuuri.md)
+
 ## Komentorivitoiminnot
 
 ### Testaus
@@ -45,4 +47,14 @@ mvn javadoc:javadoc
 ```
 
 JavaDocia voi tarkastella avaamalla selaimella tiedoston *target/site/apidocs/index.html* 
+
+### Checkstyle
+
+Tiedoston [checkstyle.xml](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/checkstyle.xml) määrittelemät tarkistukset suoritetaan hakemistossa *harjoitustyo* komennolla
+
+```
+mvn jxr:jxr checkstyle:checkstyle
+```
+
+Mahdolliset virheilmoitukset selviävät avaamalla selaimella tiedosto *target/site/checkstyle.html*
 
