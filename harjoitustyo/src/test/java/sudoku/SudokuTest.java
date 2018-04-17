@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JTextField;
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import sudoku.dao.SudokuDao;
@@ -108,4 +109,50 @@ public class SudokuTest {
         assertEquals(list, sudoku.getSudokuDaoList());
     }
 
+    @Test
+    public void getJFrame() {
+        setUp();
+        assertEquals(sudokuDao.window,sudokuDao.getJFrame());
+    }
+    @Test
+    public void getSudokuPanel() {
+        setUp();
+        assertEquals(sudokuDao.sudokuPanel,sudokuDao.getSudokuPanel());
+    }
+    @Test
+    public void getContainer() {
+        setUp();
+        assertEquals(sudokuDao.container,sudokuDao.getContainer());
+    }
+    @Test
+    public void getSubPanelList() {
+        setUp();
+        assertEquals(sudokuDao.subpanelList,sudokuDao.getSubpanelList());
+    }
+    @Test
+    public void getSudokuWidth() {
+        setUp();
+        assertEquals(sudokuDao.sudokuwidth,sudokuDao.getSudokuWidth());
+    }
+    @Test
+    public void getSudokuHeight() {
+        setUp();
+        assertEquals(sudokuDao.sudokuheight,sudokuDao.getSudokuHeight());
+    }
+    @Test
+    public void getJTextField() {
+        setUp();
+        Assert.assertArrayEquals(sudokuDao.jtf,sudokuDao.getJTextField());
+    }
+    @Test
+    public void getShownDao() {
+        setUp();
+        assertEquals(sudokuDao.shown,sudokuDao.getShown());
+    }
+    @Test
+    public void getJTextFieldList() {
+        setUp();
+        assertEquals(sudokuDao.jtfList,sudokuDao.getJTextFieldList());
+    }
+    
 }
