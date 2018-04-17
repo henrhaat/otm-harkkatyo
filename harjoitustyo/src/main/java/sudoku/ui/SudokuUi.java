@@ -91,7 +91,7 @@ public class SudokuUi {
             public void actionPerformed(ActionEvent e) {
                 exitButtonPressed(n);
             }
-        } );
+        });
     }
     
     private void addCheckButton(int n) {        
@@ -101,7 +101,7 @@ public class SudokuUi {
             public void actionPerformed(ActionEvent e) {
                 checkButtonPressed(n);
             }
-        } );
+        });
     }
     
     private void checkButtonPressed(int n) {
@@ -111,7 +111,7 @@ public class SudokuUi {
             public void actionPerformed(ActionEvent e) {
                 checkFrame.setVisible(false);
             }
-        } );
+        });
         checkFrame.setTitle("Result");
         checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
         if (sudokudomain.checkIfCorrect(n)) {
@@ -141,7 +141,7 @@ public class SudokuUi {
             public void actionPerformed(ActionEvent e) {
                 exitFrame.setVisible(false);
             }
-        } );
+        });
         
         yes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -149,7 +149,7 @@ public class SudokuUi {
                 sudokudomain.getSudoku(n).window.setVisible(false);
                 close(n);
             }
-        } );
+        });
         
         
         
