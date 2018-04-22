@@ -26,7 +26,7 @@ public class Sudoku {
     
     public void launch() {
         SudokuUi su = new SudokuUi();
-        su.start();
+        su.createLogin();
         
     }
     

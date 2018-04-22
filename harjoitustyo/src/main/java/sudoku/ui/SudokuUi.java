@@ -78,15 +78,16 @@ public class SudokuUi {
         sudokudomain.getSudokuDao(n).rightPanel.setLayout(new BoxLayout(sudokudomain.getSudokuDao(n).rightPanel, BoxLayout.Y_AXIS));
         sudokudomain.getSudokuDao(n).container.add(sudokudomain.getSudokuDao(n).rightPanel, BorderLayout.EAST);
         addCheckButton(n);
-        addExitButton(n);
+        addResetButton(n);
+        addMenuButton(n);
     }
 
-    private void addExitButton(int n) {
+    private void addMenuButton(int n) {
         JButton button = new JButton("Main menu");
         sudokudomain.getSudokuDao(n).rightPanel.add(button);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exitButtonPressed(n);
+                menuButtonPressed(n);
             }
         });
     }
@@ -99,6 +100,21 @@ public class SudokuUi {
                 checkButtonPressed(n);
             }
         });
+    }
+
+    private void addResetButton(int n) {
+        JButton button = new JButton("Reset");
+        sudokudomain.getSudokuDao(n).rightPanel.add(button);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resetButtonPressed(n);
+            }
+        });
+    }
+
+    private void menuButtonPressed(int n) {
+        sudokudomain.getSudokuDao(n).window.setVisible(false);
+        createMenu();
     }
 
     private void checkButtonPressed(int n) {
@@ -122,37 +138,41 @@ public class SudokuUi {
         checkFrame.setVisible(true);
     }
 
-    private void exitButtonPressed(int n) {
-        JFrame exitFrame = new JFrame();
+    private void resetButtonPressed(int n) {
+        JFrame resetFrame = new JFrame();
         JButton yes = new JButton("Yes");
         JButton no = new JButton("No");
         JTextArea text = new JTextArea();
-        text.setText("Are you sure you want to exit?\nYou will lose your current progress");
+        text.setText("Are you sure you want to reset this puzzle?\nYou will lose your current progress");
         text.setEditable(false);
-        exitFrame.setTitle("Exit");
-        exitFrame.getContentPane().add(yes, BorderLayout.WEST);
-        exitFrame.getContentPane().add(no, BorderLayout.EAST);
-        exitFrame.getContentPane().add(text, BorderLayout.NORTH);
+        resetFrame.setTitle("Reset");
+        resetFrame.getContentPane().add(yes, BorderLayout.WEST);
+        resetFrame.getContentPane().add(no, BorderLayout.EAST);
+        resetFrame.getContentPane().add(text, BorderLayout.NORTH);
 
         no.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exitFrame.setVisible(false);
+                resetFrame.setVisible(false);
             }
         });
 
         yes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                exitFrame.setVisible(false);
-                sudokudomain.getSudokuDao(n).window.setVisible(false);
-                createMenu();
+                resetFrame.setVisible(false);
+                for (int i = 0; i < 81; i++) {
+                    if (!sudokudomain.getSudokuDao(n).shown[i]) {
+                        sudokudomain.getSudokuDao(n).jtfList.get(i).setText("");
+                    }
+                }
+
             }
         });
 
-        exitFrame.pack();
-        exitFrame.setVisible(true);
+        resetFrame.pack();
+        resetFrame.setVisible(true);
     }
 
-    private void createLogin() {
+    public void createLogin() {
         JFrame login = new JFrame();
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
