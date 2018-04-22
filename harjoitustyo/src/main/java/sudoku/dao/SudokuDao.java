@@ -25,10 +25,10 @@ public class SudokuDao extends JPanel {
     public final boolean[] shown;
     public final String[] numbersString;
 
-    public SudokuDao() {
+    public SudokuDao(int n) {
         Puzzle puzzle = new Puzzle();
-        this.shown = puzzle.getShown(0);
-        this.numbersString = puzzle.getNumbersString(0);
+        this.shown = puzzle.getShown(n);
+        this.numbersString = puzzle.getNumbersString(n);
     }
     
     public String[] getNumbers() {

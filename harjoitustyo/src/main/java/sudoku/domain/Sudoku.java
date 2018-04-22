@@ -8,23 +8,32 @@ import sudoku.ui.SudokuUi;
 public class Sudoku {
 
     public List<SudokuDao> sudokulist;
-    public SudokuDao sudoku = new SudokuDao();
     public Puzzle puzzle = new Puzzle();
+    private Boolean[] opened = {false, false, false, false, false};
 
     public Sudoku() {
-        this.sudokulist = new ArrayList<>();
-        this.sudokulist.add(sudoku);
+        setUp();
     }
     
-    public void launch(int n) {
+    private void setUp() {
+        this.sudokulist = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            SudokuDao sudoku = new SudokuDao(i);
+            this.sudokulist.add(sudoku);
+        }
+        
+    }
+    
+    public void launch() {
         SudokuUi su = new SudokuUi();
         su.start();
+        
     }
     
     public boolean checkIfCorrect(int n) {
         
         for (int i = 0; i < 81; i++) {
-            if (!(sudoku.jtfList.get(i).getText()).equals(puzzle.numbersString[i])) {
+            if (!(getSudokuDao(n).jtfList.get(i).getText()).equals(puzzle.getNumbersString(n))) {
                 return false;
             }
         }
@@ -37,5 +46,13 @@ public class Sudoku {
     
     public List<SudokuDao> getSudokuDaoList() {
         return this.sudokulist;
+    }
+    
+    public void setOpened(int n) {
+        this.opened[n] = true;
+    }
+    
+    public boolean getOpened(int n) {
+        return this.opened[n];
     }
 }

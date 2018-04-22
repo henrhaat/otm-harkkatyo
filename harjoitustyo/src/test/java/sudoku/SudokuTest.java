@@ -21,7 +21,7 @@ public class SudokuTest {
     List<JTextField> jtfList;
 
     public void setUp() {
-        sudokuDao = new SudokuDao();
+        sudokuDao = new SudokuDao(0);
         sudoku = new Sudoku();
         puzzle = new Puzzle();
         jtfList = new ArrayList<>();
