@@ -8,3 +8,4 @@ päivä | aika | mitä tein
 10.4 | 2 | Parantelin dokumentaatiota
 16.4 | 3 | Lisäsin sudokuun "tarkista"-napin ja parantelin sovellusta
 17.4 | 5 | Lisäsin testejä ja parantelin sudokua
+22.4 | 5 | Lisäsin menun, lisää tasoja, tyhjennä-napin ja lisää testejä
