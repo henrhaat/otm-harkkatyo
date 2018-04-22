@@ -42,6 +42,10 @@ public class SudokuDao extends JPanel {
     public JPanel getSudokuPanel() {
         return this.sudokuPanel;
     }
+    
+    public JPanel getRightPanel() {
+        return this.rightPanel;
+    }
 
     public Container getContainer() {
         return this.container;
