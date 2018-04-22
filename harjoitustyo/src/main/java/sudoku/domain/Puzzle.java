@@ -40,16 +40,16 @@ public class Puzzle {
         t, t, t, f, t, f, t, f, f, t, f, f, f, f, f, t, t, t, f, f, f, f, t, t, f, f, t};
 
     public final boolean[] shown3 = {f, t, f, t, t, f, f, f, f, t, f, t, f, f, t, f, t, f, f, f, f, t, f, f, f, f, f,
-    t, t, f, t, f, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, t, t,
-    f, f, f, f, f, t, f, f, f, f, t, f, t, f, f, t, f, t, f, f, f, f, t, t, f, t, f};
+        t, t, f, t, f, f, f, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, t, t,
+        f, f, f, f, f, t, f, f, f, f, t, f, t, f, f, t, f, t, f, f, f, f, t, t, f, t, f};
     
     public final boolean[] shown4 = {f, f, f, t, f, f, f, f, f, t, f, f, f, f, t, f, t, t, t, f, f, t, f, f, f, t, f,
-    f, f, f, f, t, f, f, f, f, f, f, f, t, t, f, t, f, t, f, f, f, f, f, t, f, t, t,
-    f, t, f, t, f, t, f, t, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, f};
+        f, f, f, f, t, f, f, f, f, f, f, f, t, t, f, t, f, t, f, f, f, f, f, t, f, t, t,
+        f, t, f, t, f, t, f, t, f, t, f, f, f, f, f, f, f, f, f, t, f, f, f, f, t, f, f};
     
     public final boolean[] shown5 = {t, f, f, t, f, t, f, t, t, t, f, f, f, t, t, t, f, f, f, f, f, f, f, t, t, f, f,
-    f, f, f, t, f, t, f, t, t, f, t, f, f, f, f, f, f, t, t, t, f, t, t, t, f, f, f,
-    f, t, f, t, f, t, f, f, f, f, f, t, t, t, f, f, f, t, t, t, f, t, f, t, f, f, t};
+        f, f, f, t, f, t, f, t, t, f, t, f, f, f, f, f, f, t, t, t, f, t, t, t, f, f, f,
+        f, t, f, t, f, t, f, f, f, f, f, t, t, t, f, f, f, t, t, t, f, t, f, t, f, f, t};
     
     public Puzzle() {
         this.numberList = new ArrayList<>();
