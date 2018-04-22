@@ -18,27 +18,13 @@ public class SudokuTest {
     SudokuDao sudokuDao;
     Sudoku sudoku;
     Puzzle puzzle;
-    List<JTextField> jtfList;
 
     public void setUp() {
         sudokuDao = new SudokuDao(0);
         sudoku = new Sudoku();
         puzzle = new Puzzle();
-        jtfList = new ArrayList<>();
     }
     
-    public void setUpJtfList() {
-        sudokuDao.jtfList.clear();
-        for (int i = 0; i < 9; i++) {
-            for (int col = 0; col < 3; col++) {
-                for (int row = 0; row < 3; row++) {
-                    JTextField jtf = new JTextField();
-                    jtf.setText(sudokuDao.numbersString[3 * col + row + 9 * i] + "");
-                    sudokuDao.jtfList.add(jtf);
-                }
-            }
-        }
-    }
 
     public void boxPassesRules(int n) {
         setUp();
@@ -64,14 +50,6 @@ public class SudokuTest {
             boxPassesRules(i);
         }
     }
-
-    /*@Test
-    public void checkIfCorrectTrue() {
-        setUp();
-        setUpJtfList();
-        assertEquals(sudoku.checkIfCorrect(0), true);
-        
-    }*/
     
     @Test
     public void getShown() {
@@ -114,45 +92,95 @@ public class SudokuTest {
         setUp();
         assertEquals(sudokuDao.window,sudokuDao.getJFrame());
     }
+    
     @Test
     public void getSudokuPanel() {
         setUp();
         assertEquals(sudokuDao.sudokuPanel,sudokuDao.getSudokuPanel());
     }
+    
     @Test
     public void getContainer() {
         setUp();
         assertEquals(sudokuDao.container,sudokuDao.getContainer());
     }
+    
     @Test
     public void getSubPanelList() {
         setUp();
         assertEquals(sudokuDao.subpanelList,sudokuDao.getSubpanelList());
     }
+    
     @Test
     public void getSudokuWidth() {
         setUp();
         assertEquals(sudokuDao.sudokuwidth,sudokuDao.getSudokuWidth());
     }
+    
     @Test
     public void getSudokuHeight() {
         setUp();
         assertEquals(sudokuDao.sudokuheight,sudokuDao.getSudokuHeight());
     }
+    
     @Test
     public void getJTextField() {
         setUp();
         Assert.assertArrayEquals(sudokuDao.jtf,sudokuDao.getJTextField());
     }
+    
     @Test
     public void getShownDao() {
         setUp();
         assertEquals(sudokuDao.shown,sudokuDao.getShown());
     }
+    
     @Test
     public void getJTextFieldList() {
         setUp();
         assertEquals(sudokuDao.jtfList,sudokuDao.getJTextFieldList());
     }
+    
+    @Test
+    public void getOpened() {
+        setUp();
+        assertEquals(sudoku.getOpened(0),false);
+    }
+    
+    @Test
+    public void setOpened() {
+        setUp();
+        sudoku.setOpened(2);
+        assertEquals(sudoku.opened[2], true);
+    }
+    
+    @Test
+    public void checkIfCorrectTrue() {
+        setUp();
+        
+        sudoku.getSudokuDao(0).jtfList.clear();
+        for (int i = 0; i < 81; i++) {
+            JTextField j = new JTextField(puzzle.getNumbersString(0)[i]);
+            sudoku.getSudokuDao(0).jtfList.add(j);
+        }
+        
+        assertEquals(sudoku.checkIfCorrect(0), true);
+    }
+    
+    @Test
+    public void checkIfCorrectFalse() {
+        setUp();
+        
+        sudoku.getSudokuDao(0).jtfList.clear();
+        for (int i = 0; i < 81; i++) {
+            JTextField j = new JTextField(puzzle.getNumbersString(0)[i]);
+            sudoku.getSudokuDao(0).jtfList.add(j);
+        }
+        
+        sudoku.getSudokuDao(0).jtfList.get(30).setText(10 + "");
+        
+        assertEquals(sudoku.checkIfCorrect(0), false);
+    }
+    
     
 }

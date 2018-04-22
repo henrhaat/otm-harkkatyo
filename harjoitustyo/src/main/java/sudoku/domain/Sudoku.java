@@ -9,7 +9,7 @@ public class Sudoku {
 
     public List<SudokuDao> sudokulist;
     public Puzzle puzzle = new Puzzle();
-    private Boolean[] opened = {false, false, false, false, false};
+    public Boolean[] opened = {false, false, false, false, false};
 
     public Sudoku() {
         setUp();
@@ -33,7 +33,7 @@ public class Sudoku {
     public boolean checkIfCorrect(int n) {
         
         for (int i = 0; i < 81; i++) {
-            if (!(getSudokuDao(n).jtfList.get(i).getText()).equals(puzzle.getNumbersString(n))) {
+            if (!(getSudokuDao(n).jtfList.get(i).getText()).equals(puzzle.getNumbersString(n)[i])) {
                 return false;
             }
         }
