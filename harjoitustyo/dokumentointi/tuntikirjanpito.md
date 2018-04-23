@@ -9,3 +9,4 @@ päivä | aika | mitä tein
 16.4 | 3 | Lisäsin sudokuun "tarkista"-napin ja parantelin sovellusta
 17.4 | 5 | Lisäsin testejä ja parantelin sudokua
 22.4 | 5 | Lisäsin menun, lisää tasoja, tyhjennä-napin ja lisää testejä
+23.4 | 3 | Testikattavuus ja checkstyle parannuksia
