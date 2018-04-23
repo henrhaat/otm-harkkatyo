@@ -139,26 +139,38 @@ public class SudokuUi {
     }
 
     private void resetButtonPressed(int n) {
-        JFrame resetFrame = new JFrame();
-        JButton yes = new JButton("Yes");
-        JButton no = new JButton("No");
+        JFrame resetframe = new JFrame();
+        
         JTextArea text = new JTextArea();
         text.setText("Are you sure you want to reset this puzzle?\nYou will lose your current progress");
         text.setEditable(false);
-        resetFrame.setTitle("Reset");
-        resetFrame.getContentPane().add(yes, BorderLayout.WEST);
-        resetFrame.getContentPane().add(no, BorderLayout.EAST);
-        resetFrame.getContentPane().add(text, BorderLayout.NORTH);
+        resetframe.setTitle("Reset");
+        
+        this.addYesReset(resetframe, n);
+        this.addNoReset(resetframe);
+        resetframe.getContentPane().add(text, BorderLayout.NORTH);
 
+        resetframe.pack();
+        resetframe.setLocationRelativeTo(null);
+        resetframe.setVisible(true);
+    }
+    
+    private void addNoReset(JFrame resetframe) {
+        JButton no = new JButton("No");
+        resetframe.getContentPane().add(no, BorderLayout.EAST);
         no.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resetFrame.setVisible(false);
+                resetframe.setVisible(false);
             }
         });
+    }
 
+    private void addYesReset(JFrame resetframe, int n) {
+        JButton yes = new JButton("Yes");
+        resetframe.getContentPane().add(yes, BorderLayout.WEST);
         yes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resetFrame.setVisible(false);
+                resetframe.setVisible(false);
                 for (int i = 0; i < 81; i++) {
                     if (!sudokudomain.getSudokuDao(n).getShown()[i]) {
                         sudokudomain.getSudokuDao(n).getJTextFieldList().get(i).setText("");
@@ -167,51 +179,42 @@ public class SudokuUi {
 
             }
         });
-
-        resetFrame.pack();
-        resetFrame.setLocationRelativeTo(null);
-        resetFrame.setVisible(true);
     }
 
-    public void createLogin() {
+    private void createLogin() {
         JFrame login = new JFrame();
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
         login.setTitle("Login");
-
         JPanel lpanel = new JPanel();
         lpanel.setLayout(new GridBagLayout());
-
         JTextField text = new JTextField("     Login or create new user     ");
         text.setEditable(false);
-
         JTextField text1 = new JTextField("");
         text1.setHorizontalAlignment(JTextField.CENTER);
+        text.setFont(getFont(text, 30));
+        text1.setFont(getFont(text, 30));
+        login.getContentPane().add(text, BorderLayout.NORTH);
+        login.getContentPane().add(text1, BorderLayout.CENTER);
+        this.addLoginButton(login, text1);
+        login.pack();
+        login.setLocationRelativeTo(null);
+        login.setVisible(true);
+    }
 
+    private void addLoginButton(JFrame login, JTextField text1) {
         JButton button = new JButton("Login");
-
-        text.setFont(getFont(text,30));
-        text1.setFont(getFont(text,30));
-        button.setFont(getFont(text,30));
-
+        button.setFont(getFont(text1, 30));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 loginButtonPressed(text1);
                 login.setVisible(false);
             }
         });
-
-        login.getContentPane().add(text, BorderLayout.NORTH);
-        login.getContentPane().add(text1, BorderLayout.CENTER);
         login.getContentPane().add(button, BorderLayout.SOUTH);
-
-        login.pack();
-        login.setLocationRelativeTo(null);
-        login.setVisible(true);
     }
 
-    private void loginButtonPressed(JTextField text) {
+    private void loginButtonPressed(JTextField text1) {
         createMenu();
         // lisää toiminnallisuus
     }
@@ -227,13 +230,20 @@ public class SudokuUi {
         JTextField text = new JTextField("Choose level:");
         text.setEditable(false);
         text.setHorizontalAlignment(JTextField.CENTER);
+        text.setFont(getFont(text, 30));
         menu.getContentPane().add(text, BorderLayout.NORTH);
 
+        this.addMenuPanelButtons(menu, menupanel, text);
+        menu.pack();
+        menu.setLocationRelativeTo(null);
+        menu.setVisible(true);
+    }
 
+    private void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) {
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
             button.setText(i + "");
-            button.setFont(getFont(text,30));
+            button.setFont(getFont(text, 30));
             menupanel.add(button);
             final int a = i;
             button.addActionListener(new ActionListener() {
@@ -243,12 +253,6 @@ public class SudokuUi {
                 }
             });
         }
-
-        text.setFont(getFont(text,30));
-
-        menu.pack();
-        menu.setLocationRelativeTo(null);
-        menu.setVisible(true);
     }
 
     private void levelButtonPressed(int i) {
@@ -261,7 +265,7 @@ public class SudokuUi {
             sudokudomain.setOpened(i - 1);
         }
     }
-    
+
     public Font getFont(JTextField text, float a) {
         return text.getFont().deriveFont(a);
     }
