@@ -116,14 +116,8 @@ public class SudokuUi {
 
     private void checkButtonPressed(int n) {
         JFrame checkFrame = new JFrame();
-        JButton button = new JButton("Ok");
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                checkFrame.setVisible(false);
-            }
-        });
         checkFrame.setTitle("Result");
-        checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
+        this.addOkButton(checkFrame);
         if (sudokudomain.checkIfCorrect(n)) {
             JTextArea jtext = new JTextArea("Correct!");;
             jtext.setEditable(false);
@@ -136,6 +130,16 @@ public class SudokuUi {
         checkFrame.pack();
         checkFrame.setLocationRelativeTo(null);
         checkFrame.setVisible(true);
+    }
+    
+    private void addOkButton(JFrame checkFrame) {
+        JButton button = new JButton("Ok");
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                checkFrame.setVisible(false);
+            }
+        });
+        checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
     }
 
     private void resetButtonPressed(int n) {
