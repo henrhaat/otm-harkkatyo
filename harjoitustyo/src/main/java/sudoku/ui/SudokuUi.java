@@ -39,9 +39,7 @@ public class SudokuUi {
             for (int col = 0; col < 3; col++) {
                 for (int row = 0; row < 3; row++) {
                     sudokudomain.getSudokuDao(n).getJTextField()[row][col] = new JTextField();
-                    Font f = sudokudomain.getSudokuDao(n).getJTextField()[0][0].getFont();
-                    Font f2 = f.deriveFont((float) 25);
-                    sudokudomain.getSudokuDao(n).getJTextField()[row][col].setFont(f2);
+                    sudokudomain.getSudokuDao(n).getJTextField()[row][col].setFont(this.getFont(sudokudomain.getSudokuDao(n).getJTextField()[0][0], 25));
                     panel.add(sudokudomain.getSudokuDao(n).getJTextField()[row][col]);
                     sudokudomain.getSudokuDao(n).getJTextField()[row][col].setText(sudokudomain.getSudokuDao(n).numbersString[3 * col + row + 9 * i]);
                     setMask(row, col, i, n);
@@ -193,12 +191,9 @@ public class SudokuUi {
 
         JButton button = new JButton("Login");
 
-        Font f = text.getFont();
-        Font f2 = f.deriveFont((float) 30);
-
-        text.setFont(f2);
-        text1.setFont(f2);
-        button.setFont(f2);
+        text.setFont(getFont(text,30));
+        text1.setFont(getFont(text,30));
+        button.setFont(getFont(text,30));
 
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -234,13 +229,11 @@ public class SudokuUi {
         text.setHorizontalAlignment(JTextField.CENTER);
         menu.getContentPane().add(text, BorderLayout.NORTH);
 
-        Font f = text.getFont();
-        Font f2 = f.deriveFont((float) 30);
 
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
             button.setText(i + "");
-            button.setFont(f2);
+            button.setFont(getFont(text,30));
             menupanel.add(button);
             final int a = i;
             button.addActionListener(new ActionListener() {
@@ -251,7 +244,7 @@ public class SudokuUi {
             });
         }
 
-        text.setFont(f2);
+        text.setFont(getFont(text,30));
 
         menu.pack();
         menu.setLocationRelativeTo(null);
@@ -267,6 +260,10 @@ public class SudokuUi {
             createWindow(i - 1);
             sudokudomain.setOpened(i - 1);
         }
+    }
+    
+    public Font getFont(JTextField text, float a) {
+        return text.getFont().deriveFont(a);
     }
 
     public static void main(String[] args) {
