@@ -3,7 +3,6 @@ package sudoku.domain;
 import java.util.ArrayList;
 import java.util.List;
 import sudoku.dao.SudokuDao;
-import sudoku.ui.SudokuUi;
 
 public class Sudoku {
 
@@ -24,16 +23,10 @@ public class Sudoku {
         
     }
     
-    public void launch() {
-        SudokuUi su = new SudokuUi();
-        su.createLogin();
-        
-    }
-    
     public boolean checkIfCorrect(int n) {
         
         for (int i = 0; i < 81; i++) {
-            if (!(getSudokuDao(n).jtfList.get(i).getText()).equals(puzzle.getNumbersString(n)[i])) {
+            if (!(getSudokuDao(n).getJTextFieldList().get(i).getText()).equals(puzzle.getNumbersString(n)[i])) {
                 return false;
             }
         }

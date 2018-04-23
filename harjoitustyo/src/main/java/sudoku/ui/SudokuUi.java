@@ -2,13 +2,11 @@ package sudoku.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -70,6 +68,7 @@ public class SudokuUi {
         sudokudomain.getSudokuDao(n).container.add(sudokudomain.getSudokuDao(n).getSudokuPanel(), BorderLayout.CENTER);
         this.createRightPanel(n);
         sudokudomain.getSudokuDao(n).getJFrame().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        sudokudomain.getSudokuDao(n).getJFrame().setLocationRelativeTo(null);
         sudokudomain.getSudokuDao(n).getJFrame().setVisible(true);
 
     }
@@ -128,13 +127,16 @@ public class SudokuUi {
         checkFrame.setTitle("Result");
         checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
         if (sudokudomain.checkIfCorrect(n)) {
-            JTextField jtext = new JTextField("Correct!");
+            JTextArea jtext = new JTextArea("Correct!");;
+            jtext.setEditable(false);
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
         } else {
-            JTextField jtext = new JTextField("Some numbers are still wrong..");
+            JTextArea jtext = new JTextArea("Some numbers are still wrong..");
+            jtext.setEditable(false);
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
         }
         checkFrame.pack();
+        checkFrame.setLocationRelativeTo(null);
         checkFrame.setVisible(true);
     }
 
@@ -169,11 +171,13 @@ public class SudokuUi {
         });
 
         resetFrame.pack();
+        resetFrame.setLocationRelativeTo(null);
         resetFrame.setVisible(true);
     }
 
     public void createLogin() {
         JFrame login = new JFrame();
+        login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         login.setTitle("Login");
@@ -208,6 +212,7 @@ public class SudokuUi {
         login.getContentPane().add(button, BorderLayout.SOUTH);
 
         login.pack();
+        login.setLocationRelativeTo(null);
         login.setVisible(true);
     }
 
@@ -222,7 +227,6 @@ public class SudokuUi {
         menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         JPanel menupanel = new JPanel();
         menupanel.setLayout(new GridLayout(1, 5, 5, 5));
-        FlowLayout flow = new FlowLayout();
         menu.getContentPane().add(menupanel, BorderLayout.CENTER);
 
         JTextField text = new JTextField("Choose level:");
@@ -249,8 +253,8 @@ public class SudokuUi {
 
         text.setFont(f2);
 
-        menu.setSize(1000, 1000);
         menu.pack();
+        menu.setLocationRelativeTo(null);
         menu.setVisible(true);
     }
 
@@ -265,13 +269,9 @@ public class SudokuUi {
         }
     }
 
-    /*private void close(int n) {
-        sudokudomain.getSudokuDao(n).getJFrame().dispatchEvent(new WindowEvent(sudokudomain.getSudokuDao(n).getJFrame(), WindowEvent.WINDOW_CLOSING));
-    }*/
-
     public static void main(String[] args) {
-        Sudoku s = new Sudoku();
-        s.launch();
+        SudokuUi su = new SudokuUi();
+        su.createLogin();
     }
 
 }
