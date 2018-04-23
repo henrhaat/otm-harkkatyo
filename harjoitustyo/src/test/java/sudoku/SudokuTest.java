@@ -142,6 +142,12 @@ public class SudokuTest {
     }
     
     @Test
+    public void getRightPanel() {
+        setUp();
+        assertEquals(sudokuDao.rightPanel, sudokuDao.getRightPanel());
+    }
+    
+    @Test
     public void getOpened() {
         setUp();
         assertEquals(sudoku.getOpened(0),false);
