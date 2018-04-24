@@ -12,7 +12,7 @@ Mene hakemistoon, mihin purit *otm-harkkatyo-master.zip* tiedoston ja mene aliha
 ```
 mvn compile exec:java -Dexec.mainClass=sudoku.ui.SudokuUi
 ```
-Sovellus käynnistyy kirjautumisnäkymään, jossa voit kirjautua sisään valitsemallasi käyttäjätunnuksella. Kirjauduttuasi sisään avautuu päävalikko, jossa on napit 1-5. Painamalla nappeja pääset viiteen eri sudokuun, joita voit yrittää ratkaista pelin sääntöjen mukaisesti. Kun olet omasta mielestäsi valmis jonkin sudokun kanssa, paina "Ready"-nappia. Jos sudoku on täytetty oikein, niin saat onnitteluikkunan ja voit siirtyä takaisin päävalikkoon painamalla "Main menu"-nappia ja avaamalla uuden sudokun.
+Sovellus käynnistyy kirjautumisnäkymään, jossa voit kirjautua sisään valitsemallasi käyttäjätunnuksella. Kirjauduttuasi sisään avautuu päävalikko, jossa on napit 1-5. Painamalla nappeja pääset viiteen eri sudokuun, joita voit yrittää ratkaista pelin sääntöjen mukaisesti. Kun olet omasta mielestäsi valmis jonkin sudokun kanssa, paina "Ready"-nappia. Jos sudoku on täytetty oikein, niin saat onnitteluikkunan ja voit siirtyä takaisin päävalikkoon painamalla "Main menu"-nappia ja voit yrittää seuraavaa sudokua.
 
 ## Pelin säännöt
 
