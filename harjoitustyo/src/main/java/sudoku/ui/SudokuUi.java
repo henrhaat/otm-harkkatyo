@@ -18,18 +18,14 @@ import sudoku.domain.Sudoku;
 
 public class SudokuUi {
 
-    Sudoku sudokudomain = new Sudoku();
-
-    public void start() {
-        createLogin();
-    }
+    Sudoku sudokuDomain = new Sudoku();
 
     private void createGrid(int n) {
-        sudokudomain.getSudokuDao(n).getJFrame().setTitle("Sudoku");
-        sudokudomain.getSudokuDao(n).getJFrame().setSize(sudokudomain.getSudokuDao(n).getSudokuWidth() + 150, sudokudomain.getSudokuDao(n).getSudokuHeight());
-        sudokudomain.getSudokuDao(n).getSudokuPanel().setLayout(new GridLayout(3, 3, 5, 5));
-        sudokudomain.getSudokuDao(n).getSudokuPanel().setBackground(Color.black);
-        this.sudokudomain.getSudokuDao(n).container = sudokudomain.getSudokuDao(n).getJFrame().getContentPane();
+        sudokuDomain.getSudokuDao(n).getJFrame().setTitle("Sudoku");
+        sudokuDomain.getSudokuDao(n).getJFrame().setSize(sudokuDomain.getSudokuDao(n).getSudokuWidth() + 150, sudokuDomain.getSudokuDao(n).getSudokuHeight());
+        sudokuDomain.getSudokuDao(n).getSudokuPanel().setLayout(new GridLayout(3, 3, 5, 5));
+        sudokuDomain.getSudokuDao(n).getSudokuPanel().setBackground(Color.black);
+        this.sudokuDomain.getSudokuDao(n).container = sudokuDomain.getSudokuDao(n).getJFrame().getContentPane();
     }
 
     private void setNumbers(int n) {
@@ -38,42 +34,42 @@ public class SudokuUi {
             panel.setLayout(new GridLayout(3, 3));
             for (int col = 0; col < 3; col++) {
                 for (int row = 0; row < 3; row++) {
-                    sudokudomain.getSudokuDao(n).getJTextField()[row][col] = new JTextField();
-                    sudokudomain.getSudokuDao(n).getJTextField()[row][col].setFont(this.getFont(sudokudomain.getSudokuDao(n).getJTextField()[0][0], 25));
-                    panel.add(sudokudomain.getSudokuDao(n).getJTextField()[row][col]);
-                    sudokudomain.getSudokuDao(n).getJTextField()[row][col].setText(sudokudomain.getSudokuDao(n).numbersString[3 * col + row + 9 * i]);
+                    sudokuDomain.getSudokuDao(n).getJTextField()[row][col] = new JTextField();
+                    sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setFont(this.getFont(sudokuDomain.getSudokuDao(n).getJTextField()[0][0], 25));
+                    panel.add(sudokuDomain.getSudokuDao(n).getJTextField()[row][col]);
+                    sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setText(sudokuDomain.getSudokuDao(n).getNumbers()[3 * col + row + 9 * i]);
                     setMask(row, col, i, n);
-                    sudokudomain.getSudokuDao(n).getJTextFieldList().add(sudokudomain.getSudokuDao(n).getJTextField()[row][col]);
+                    sudokuDomain.getSudokuDao(n).getJTextFieldList().add(sudokuDomain.getSudokuDao(n).getJTextField()[row][col]);
                 }
             }
-            sudokudomain.getSudokuDao(n).getSudokuPanel().add(panel);
-            sudokudomain.getSudokuDao(n).getSubpanelList().add(panel);
+            sudokuDomain.getSudokuDao(n).getSudokuPanel().add(panel);
+            sudokuDomain.getSudokuDao(n).getSubpanelList().add(panel);
         }
     }
 
     private void setMask(int row, int col, int i, int n) {
-        if (sudokudomain.getSudokuDao(n).getShown()[3 * col + row + 9 * i]) {
-            sudokudomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
-            sudokudomain.getSudokuDao(n).getJTextField()[row][col].setEditable(false);
+        if (sudokuDomain.getSudokuDao(n).getShown()[3 * col + row + 9 * i]) {
+            sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
+            sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setEditable(false);
         } else {
-            sudokudomain.getSudokuDao(n).getJTextField()[row][col].setText("");
-            sudokudomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
-            sudokudomain.getSudokuDao(n).getJTextField()[row][col].setEditable(true);
+            sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setText("");
+            sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
+            sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setEditable(true);
         }
     }
 
     private void createWindow(int n) {
-        sudokudomain.getSudokuDao(n).container.add(sudokudomain.getSudokuDao(n).getSudokuPanel(), BorderLayout.CENTER);
+        sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getSudokuPanel(), BorderLayout.CENTER);
         this.createRightPanel(n);
-        sudokudomain.getSudokuDao(n).getJFrame().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        sudokudomain.getSudokuDao(n).getJFrame().setLocationRelativeTo(null);
-        sudokudomain.getSudokuDao(n).getJFrame().setVisible(true);
+        sudokuDomain.getSudokuDao(n).getJFrame().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        sudokuDomain.getSudokuDao(n).getJFrame().setLocationRelativeTo(null);
+        sudokuDomain.getSudokuDao(n).getJFrame().setVisible(true);
 
     }
 
     private void createRightPanel(int n) {
-        sudokudomain.getSudokuDao(n).getRightPanel().setLayout(new BoxLayout(sudokudomain.getSudokuDao(n).getRightPanel(), BoxLayout.Y_AXIS));
-        sudokudomain.getSudokuDao(n).container.add(sudokudomain.getSudokuDao(n).getRightPanel(), BorderLayout.EAST);
+        sudokuDomain.getSudokuDao(n).getRightPanel().setLayout(new BoxLayout(sudokuDomain.getSudokuDao(n).getRightPanel(), BoxLayout.Y_AXIS));
+        sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getRightPanel(), BorderLayout.EAST);
         addCheckButton(n);
         addResetButton(n);
         addMenuButton(n);
@@ -81,7 +77,7 @@ public class SudokuUi {
 
     private void addMenuButton(int n) {
         JButton button = new JButton("Main menu");
-        sudokudomain.getSudokuDao(n).getRightPanel().add(button);
+        sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 menuButtonPressed(n);
@@ -91,7 +87,7 @@ public class SudokuUi {
 
     private void addCheckButton(int n) {
         JButton button = new JButton("Ready");
-        sudokudomain.getSudokuDao(n).getRightPanel().add(button);
+        sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 checkButtonPressed(n);
@@ -101,7 +97,7 @@ public class SudokuUi {
 
     private void addResetButton(int n) {
         JButton button = new JButton("Reset");
-        sudokudomain.getSudokuDao(n).getRightPanel().add(button);
+        sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 resetButtonPressed(n);
@@ -110,7 +106,7 @@ public class SudokuUi {
     }
 
     private void menuButtonPressed(int n) {
-        sudokudomain.getSudokuDao(n).getJFrame().setVisible(false);
+        sudokuDomain.getSudokuDao(n).getJFrame().setVisible(false);
         createMenu();
     }
 
@@ -118,7 +114,7 @@ public class SudokuUi {
         JFrame checkFrame = new JFrame();
         checkFrame.setTitle("Result");
         this.addOkButton(checkFrame);
-        if (sudokudomain.checkIfCorrect(n)) {
+        if (sudokuDomain.checkIfCorrect(n)) {
             JTextArea jtext = new JTextArea("Correct!");;
             jtext.setEditable(false);
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
@@ -176,8 +172,8 @@ public class SudokuUi {
             public void actionPerformed(ActionEvent e) {
                 resetframe.setVisible(false);
                 for (int i = 0; i < 81; i++) {
-                    if (!sudokudomain.getSudokuDao(n).getShown()[i]) {
-                        sudokudomain.getSudokuDao(n).getJTextFieldList().get(i).setText("");
+                    if (!sudokuDomain.getSudokuDao(n).getShown()[i]) {
+                        sudokuDomain.getSudokuDao(n).getJTextFieldList().get(i).setText("");
                     }
                 }
 
@@ -260,13 +256,13 @@ public class SudokuUi {
     }
 
     private void levelButtonPressed(int i) {
-        if (sudokudomain.getOpened(i - 1)) {
-            sudokudomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
+        if (sudokuDomain.getOpened(i - 1)) {
+            sudokuDomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
         } else {
             createGrid(i - 1);
             setNumbers(i - 1);
             createWindow(i - 1);
-            sudokudomain.setOpened(i - 1);
+            sudokuDomain.setOpened(i - 1);
         }
     }
 
