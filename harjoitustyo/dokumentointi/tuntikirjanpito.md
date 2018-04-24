@@ -11,4 +11,4 @@ päivä | aika | mitä tein
 22.4 | 5 | Lisäsin menun, lisää tasoja, tyhjennä-napin ja lisää testejä
 23.4 | 3 | Testikattavuus ja checkstyle parannuksia
 24.4 | 3 | Parantelin dokumentaatiota ja loin releasen
-yht | 32 | 
+ yht | 32 | 
