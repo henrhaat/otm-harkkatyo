@@ -1,5 +1,7 @@
 # Sudoku
 
+Sudoku on logiikkapeli, jossa tehtävänä on täyttää neliönmuotoinen ruudukko merkeillä niin että jokaisella vaakarivillä ja pystyrivillä sekä jokaisessa osaneliössä käytetään samaa merkkiä tasan yhden kerran. Ruudukossa on aluksi valmiina jo muutama merkki. Kaikissa sovelluksen viidessä eri sudokussa on 9 × 9 -ruudukko, jotka ovat jaettu yhdeksään 3 × 3 ruudun osaneliöön, ja merkkeinä käytetään numeroita 1–9.
+
 ## Dokumentaatio
 
 [Käyttöohje](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kayttoohje.md)
