@@ -8,6 +8,7 @@ import javax.swing.JTextField;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 import sudoku.dao.SudokuDao;
 import sudoku.domain.Puzzle;
 import sudoku.domain.Sudoku;
@@ -19,6 +20,7 @@ public class SudokuTest {
     Sudoku sudoku;
     Puzzle puzzle;
 
+    @Before
     public void setUp() {
         sudokuDao = new SudokuDao(0);
         sudoku = new Sudoku();
@@ -175,7 +177,7 @@ public class SudokuTest {
     
     @Test
     public void checkIfCorrectFalse() {
-        setUp();
+        //setUp();
         
         sudoku.getSudokuDao(0).jtfList.clear();
         for (int i = 0; i < 81; i++) {
