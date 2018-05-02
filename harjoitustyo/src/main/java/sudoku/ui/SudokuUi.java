@@ -129,7 +129,11 @@ public class SudokuUi {
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                menuButtonPressed(n);
+                try {
+                    menuButtonPressed(n);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -172,7 +176,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    public void menuButtonPressed(int n) {
+    public void menuButtonPressed(int n) throws SQLException {
         sudokuDomain.getSudokuDao(n).getJFrame().setVisible(false);
         createMenu();
     }
@@ -183,7 +187,6 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-
     public void checkButtonPressed(int n) {
         JFrame checkFrame = new JFrame();
         checkFrame.setTitle("Result");
@@ -192,6 +195,12 @@ public class SudokuUi {
             JTextArea jtext = new JTextArea("Correct!");;
             jtext.setEditable(false);
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
+            try {
+                sudokuDomain.setCompleted(n);
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             JTextArea jtext = new JTextArea("Some numbers are still wrong..");
             jtext.setEditable(false);
@@ -224,7 +233,6 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-
     public void resetButtonPressed(int n) {
         JFrame resetframe = new JFrame();
 
@@ -336,7 +344,6 @@ public class SudokuUi {
      * @param text1 textfield
      *
      */
-
     public void loginButtonPressed(JTextField text1) throws SQLException {
         sudokuDomain.setName(text1.getText());
         if (!sudokuDomain.checkIfNameExists(text1.getText())) {
@@ -350,7 +357,7 @@ public class SudokuUi {
      * Metodi luo päävalikkoikkunan
      *
      */
-    public void createMenu() {
+    public void createMenu() throws SQLException {
         JFrame menu = new JFrame();
         menu.setTitle("Main menu");
         menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -378,10 +385,12 @@ public class SudokuUi {
      * @param text textfield
      *
      */
-
-    public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) {
+    public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) throws SQLException {
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
+            if (sudokuDomain.getCompleted(i-1)) {
+                button.setBackground(Color.GREEN);
+            }
             button.setText(i + "");
             button.setFont(getFont(text, 30));
             menupanel.add(button);
@@ -401,7 +410,6 @@ public class SudokuUi {
      * @param i Sudokun numero
      *
      */
-
     public void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
             sudokuDomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
@@ -422,7 +430,6 @@ public class SudokuUi {
      *
      * @return fontti koon muutoksen jälkeen
      */
-
     public Font getFont(JTextField text, float a) {
         return text.getFont().deriveFont(a);
     }
