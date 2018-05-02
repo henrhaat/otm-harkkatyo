@@ -15,3 +15,9 @@ Ohjelman luokkien suhdetta kuvaava luokkakaavio:
 ### Ensimmäisen sudokun luominen
 
 ![sekvenssi1](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/3.png)
+
+## Tietojen pysyväistallennus
+
+Pakkauksen sudoku.dao luokka _SudokuDao_ huolehtii tietojen tallentamisesta tiedostoon _database.db_.
+
+Tiedostoon tallennetaan käyttäjänimet ja kyseisten käyttäjänimien suorittamat sudokut.
