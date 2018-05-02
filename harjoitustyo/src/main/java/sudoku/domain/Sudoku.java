@@ -79,9 +79,9 @@ public class Sudoku {
     }
 
     public boolean getCompleted(int i) throws SQLException {
-        int a = i+1;
+        int a = i + 1;
         PreparedStatement stmt
-                = conn.prepareStatement("SELECT Completed" + a +" FROM User WHERE name = '" + name+ "'");
+                = conn.prepareStatement("SELECT Completed" + a + " FROM User WHERE name = '" + name + "'");
         ResultSet tulos = stmt.executeQuery();
         tulos.next();
         

@@ -388,7 +388,7 @@ public class SudokuUi {
     public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) throws SQLException {
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
-            if (sudokuDomain.getCompleted(i-1)) {
+            if (sudokuDomain.getCompleted(i - 1)) {
                 button.setBackground(Color.GREEN);
             }
             button.setText(i + "");
