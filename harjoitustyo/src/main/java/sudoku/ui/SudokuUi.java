@@ -174,6 +174,7 @@ public class SudokuUi {
      * Metodi lisää "Menu" napille toimivuuden
      *
      * @param n Sudokun numero
+     * @throws java.sql.SQLException
      *
      */
     public void menuButtonPressed(int n) throws SQLException {
@@ -293,6 +294,7 @@ public class SudokuUi {
      * Metodi luo kirjautumisikkunan
      *
      *
+     * @throws java.sql.SQLException
      */
     public void createLogin() throws SQLException {
         JFrame login = new JFrame();
@@ -342,6 +344,7 @@ public class SudokuUi {
      * Metodi lisää "Login" napille toimivuuden
      *
      * @param text1 textfield
+     * @throws java.sql.SQLException
      *
      */
     public void loginButtonPressed(JTextField text1) throws SQLException {
@@ -356,6 +359,7 @@ public class SudokuUi {
     /**
      * Metodi luo päävalikkoikkunan
      *
+     * @throws java.sql.SQLException
      */
     public void createMenu() throws SQLException {
         JFrame menu = new JFrame();
@@ -383,6 +387,7 @@ public class SudokuUi {
      * @param menu ikkuna
      * @param menupanel paneeli napeille
      * @param text textfield
+     * @throws java.sql.SQLException
      *
      */
     public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) throws SQLException {

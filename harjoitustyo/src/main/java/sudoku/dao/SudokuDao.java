@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import sudoku.domain.Sudoku;
 
 /**
- * Luokka sisältää sudokuun tarvittavia muuttujia
+ * Luokka sisältää sudokuun tarvittavia muuttujia ja yhteyden tietokantaan
  */
 public class SudokuDao extends JPanel {
 
@@ -95,10 +95,11 @@ public class SudokuDao extends JPanel {
     }
 
     /**
-     * Metodi palautta true jos tämänhetkinen käyttäjä on läpäissyt Sudokun
-     * numero i
+     * Metodi testaa, onko tämänhetkinen käyttäjä läpäissyt Sudokun numero i
      *
      * @param i Sudokun numero
+     * @return true jos käyttäjä on läpäissyt Sudokun numero i, muuten false
+     * @throws java.sql.SQLException
      *
      */
     public boolean getCompleted(int i) throws SQLException {
@@ -115,6 +116,7 @@ public class SudokuDao extends JPanel {
      * Metodi asettaa Sudokun numero i suoritetuksi tämänhetkiselle käyttäjälle
      *
      * @param i Sudokun numero
+     * @throws java.sql.SQLException
      *
      */
     public void setCompleted(int i) throws SQLException {
@@ -145,10 +147,11 @@ public class SudokuDao extends JPanel {
     }
 
     /**
-     * Metodi tarkistaa tietokannasta, onko kyseinen käyttäjänimi jo käytössä ja
-     * palauttaa true, jos on käytössä ja false, jos ei ole käytössä
+     * Metodi tarkistaa tietokannasta, onko kyseinen käyttäjänimi jo käytössä
      *
      * @param name käyttäjänimi
+     * @return true, jos on käytössä ja false, jos ei ole käytössä
+     * @throws java.sql.SQLException
      *
      */
     public boolean checkIfNameExists(String name) throws SQLException {
@@ -163,6 +166,7 @@ public class SudokuDao extends JPanel {
      * Metodi lisää käyttäjänimen tietokantaan
      *
      * @param name käyttäjänimi
+     * @throws java.sql.SQLException
      *
      */
     public void addNameToDatabase(String name) throws SQLException {

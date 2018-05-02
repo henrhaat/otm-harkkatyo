@@ -1,14 +1,8 @@
 package sudoku.domain;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sudoku.dao.SudokuDao;
 
 /**
@@ -22,6 +16,7 @@ public class Sudoku {
 
     /**
      * Luokan konstruktori
+     * @throws java.sql.SQLException
      */
     public Sudoku() throws SQLException {
         setUp();
