@@ -238,7 +238,7 @@ public class SudokuUi {
     /**
      * Metodi lisää "Reset" ikkunalle "No" napin ja sen toimivuuden
      *
-     * @param resetfram ikkuna
+     * @param resetframe ikkuna
      *
      */
 
