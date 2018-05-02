@@ -3,6 +3,9 @@ package sudoku.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka sisältää tiedon kaikista Sudokujen numeroista ja peitettävistä ruuduista
+ */
 public class Puzzle {
 
     private final List<boolean[]> shownList;

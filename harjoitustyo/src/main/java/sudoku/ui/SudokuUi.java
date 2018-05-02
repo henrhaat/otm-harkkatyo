@@ -7,6 +7,9 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,7 +24,11 @@ import sudoku.domain.Sudoku;
  */
 public class SudokuUi {
 
-    Sudoku sudokuDomain = new Sudoku();
+    Sudoku sudokuDomain;
+
+    public SudokuUi() throws SQLException {
+        this.sudokuDomain = new Sudoku();
+    }
 
     /**
      * Metodi luo sudokupohjan
@@ -158,18 +165,18 @@ public class SudokuUi {
             }
         });
     }
-    
+
     /**
      * Metodi lisää "Menu" napille toimivuuden
      *
      * @param n Sudokun numero
      *
      */
-
     public void menuButtonPressed(int n) {
         sudokuDomain.getSudokuDao(n).getJFrame().setVisible(false);
         createMenu();
     }
+
     /**
      * Metodi lisää "Ready" napille toimivuuden
      *
@@ -194,14 +201,13 @@ public class SudokuUi {
         checkFrame.setLocationRelativeTo(null);
         checkFrame.setVisible(true);
     }
-    
+
     /**
      * Metodi lisää "Ok" napin ikkunaan
      *
      * @param checkFrame ikkuna
      *
      */
-
     public void addOkButton(JFrame checkFrame) {
         JButton button = new JButton("Ok");
         button.addActionListener(new ActionListener() {
@@ -211,6 +217,7 @@ public class SudokuUi {
         });
         checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
     }
+
     /**
      * Metodi lisää "Reset" napille toimivuuden
      *
@@ -234,14 +241,13 @@ public class SudokuUi {
         resetframe.setLocationRelativeTo(null);
         resetframe.setVisible(true);
     }
-    
+
     /**
      * Metodi lisää "Reset" ikkunalle "No" napin ja sen toimivuuden
      *
      * @param resetframe ikkuna
      *
      */
-
     public void addNoReset(JFrame resetframe) {
         JButton no = new JButton("No");
         resetframe.getContentPane().add(no, BorderLayout.EAST);
@@ -251,7 +257,7 @@ public class SudokuUi {
             }
         });
     }
-    
+
     /**
      * Metodi lisää "Reset" ikkunalle "Yes" napin ja sen toimivuuden
      *
@@ -259,7 +265,6 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-
     public void addYesReset(JFrame resetframe, int n) {
         JButton yes = new JButton("Yes");
         resetframe.getContentPane().add(yes, BorderLayout.WEST);
@@ -275,14 +280,13 @@ public class SudokuUi {
             }
         });
     }
-    
+
     /**
      * Metodi luo kirjautumisikkunan
      *
      *
      */
-
-    public void createLogin() {
+    public void createLogin() throws SQLException {
         JFrame login = new JFrame();
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -315,12 +319,17 @@ public class SudokuUi {
         button.setFont(getFont(text1, 30));
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                loginButtonPressed(text1);
+                try {
+                    loginButtonPressed(text1);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 login.setVisible(false);
             }
         });
         login.getContentPane().add(button, BorderLayout.SOUTH);
     }
+
     /**
      * Metodi lisää "Login" napille toimivuuden
      *
@@ -328,7 +337,11 @@ public class SudokuUi {
      *
      */
 
-    public void loginButtonPressed(JTextField text1) {
+    public void loginButtonPressed(JTextField text1) throws SQLException {
+        sudokuDomain.setName(text1.getText());
+        if (!sudokuDomain.checkIfNameExists(text1.getText())) {
+            sudokuDomain.addNameToDatabase(text1.getText());
+        }
         createMenu();
         // lisää toiminnallisuus
     }
@@ -356,6 +369,7 @@ public class SudokuUi {
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
     }
+
     /**
      * Metodi lisää päävalikkoikkunalle sen napit
      *
@@ -380,6 +394,7 @@ public class SudokuUi {
             });
         }
     }
+
     /**
      * Metodi lisää päävalikon napeille toimivuudet
      *
@@ -397,8 +412,10 @@ public class SudokuUi {
             sudokuDomain.setOpened(i - 1);
         }
     }
+
     /**
-     * Metodi palauttaa fontin textfieldistä, kun sen kokoa muutetaan kertoimen verran
+     * Metodi palauttaa fontin textfieldistä, kun sen kokoa muutetaan kertoimen
+     * verran
      *
      * @param text textfield
      * @param a kerroin
@@ -410,7 +427,7 @@ public class SudokuUi {
         return text.getFont().deriveFont(a);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         SudokuUi su = new SudokuUi();
         su.createLogin();
     }
