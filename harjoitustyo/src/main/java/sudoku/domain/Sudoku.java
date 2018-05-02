@@ -22,7 +22,13 @@ public class Sudoku {
         }
         
     }
-    
+    /**
+     * Metodi testaa, onko Sudoku täytetty oikein
+     *
+     * @param n Sudokun numero
+     * 
+     * @return true jos Sudoku on täytetty oikein, muuten false
+     */
     public boolean checkIfCorrect(int n) {
         
         for (int i = 0; i < 81; i++) {

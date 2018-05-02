@@ -16,10 +16,19 @@ import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import sudoku.domain.Sudoku;
 
+/**
+ * Luokka luo Sudoku-pelille käyttöliittymän
+ */
 public class SudokuUi {
 
     Sudoku sudokuDomain = new Sudoku();
 
+    /**
+     * Metodi luo sudokupohjan
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void createGrid(int n) {
         sudokuDomain.getSudokuDao(n).getJFrame().setTitle("Sudoku");
         sudokuDomain.getSudokuDao(n).getJFrame().setSize(sudokuDomain.getSudokuDao(n).getSudokuWidth() + 150, sudokuDomain.getSudokuDao(n).getSudokuHeight());
@@ -28,6 +37,12 @@ public class SudokuUi {
         this.sudokuDomain.getSudokuDao(n).container = sudokuDomain.getSudokuDao(n).getJFrame().getContentPane();
     }
 
+    /**
+     * Metodi asettaa sudokupohjaan numerot
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void setNumbers(int n) {
         for (int i = 0; i < 9; i++) {
             JPanel panel = new JPanel();
@@ -47,6 +62,15 @@ public class SudokuUi {
         }
     }
 
+    /**
+     * Metodi asettaa sudokupohjan numeroille maskit
+     *
+     * @param row rivi
+     * @param col kolumni
+     * @param i 3x3 ruudukon numero
+     * @param n Sudokun numero
+     *
+     */
     private void setMask(int row, int col, int i, int n) {
         if (sudokuDomain.getSudokuDao(n).getShown()[3 * col + row + 9 * i]) {
             sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
@@ -58,6 +82,12 @@ public class SudokuUi {
         }
     }
 
+    /**
+     * Metodi luo Sudoku-ikkunan
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void createWindow(int n) {
         sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getSudokuPanel(), BorderLayout.CENTER);
         this.createRightPanel(n);
@@ -67,6 +97,12 @@ public class SudokuUi {
 
     }
 
+    /**
+     * Metodi luo Sudoku-ikkunalle oikean paneelin
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void createRightPanel(int n) {
         sudokuDomain.getSudokuDao(n).getRightPanel().setLayout(new BoxLayout(sudokuDomain.getSudokuDao(n).getRightPanel(), BoxLayout.Y_AXIS));
         sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getRightPanel(), BorderLayout.EAST);
@@ -75,6 +111,12 @@ public class SudokuUi {
         addMenuButton(n);
     }
 
+    /**
+     * Metodi lisää Sudoku-ikkunan oikeaan paneeliin "Menu" napin
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void addMenuButton(int n) {
         JButton button = new JButton("Main menu");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
@@ -85,6 +127,12 @@ public class SudokuUi {
         });
     }
 
+    /**
+     * Metodi lisää Sudoku-ikkunan oikeaan paneeliin "Ready" napin
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void addCheckButton(int n) {
         JButton button = new JButton("Ready");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
@@ -95,6 +143,12 @@ public class SudokuUi {
         });
     }
 
+    /**
+     * Metodi lisää Sudoku-ikkunan oikeaan paneeliin "Reset" napin
+     *
+     * @param n Sudokun numero
+     *
+     */
     private void addResetButton(int n) {
         JButton button = new JButton("Reset");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
@@ -104,11 +158,24 @@ public class SudokuUi {
             }
         });
     }
+    
+    /**
+     * Metodi lisää "Menu" napille toimivuuden
+     *
+     * @param n Sudokun numero
+     *
+     */
 
     private void menuButtonPressed(int n) {
         sudokuDomain.getSudokuDao(n).getJFrame().setVisible(false);
         createMenu();
     }
+    /**
+     * Metodi lisää "Ready" napille toimivuuden
+     *
+     * @param n Sudokun numero
+     *
+     */
 
     private void checkButtonPressed(int n) {
         JFrame checkFrame = new JFrame();
@@ -128,6 +195,13 @@ public class SudokuUi {
         checkFrame.setVisible(true);
     }
     
+    /**
+     * Metodi lisää "Ok" napin ikkunaan
+     *
+     * @param checkFrame ikkuna
+     *
+     */
+
     private void addOkButton(JFrame checkFrame) {
         JButton button = new JButton("Ok");
         button.addActionListener(new ActionListener() {
@@ -137,15 +211,21 @@ public class SudokuUi {
         });
         checkFrame.getContentPane().add(button, BorderLayout.SOUTH);
     }
+    /**
+     * Metodi lisää "Reset" napille toimivuuden
+     *
+     * @param n Sudokun numero
+     *
+     */
 
     private void resetButtonPressed(int n) {
         JFrame resetframe = new JFrame();
-        
+
         JTextArea text = new JTextArea();
         text.setText("Are you sure you want to reset this puzzle?\nYou will lose your current progress");
         text.setEditable(false);
         resetframe.setTitle("Reset");
-        
+
         this.addYesReset(resetframe, n);
         this.addNoReset(resetframe);
         resetframe.getContentPane().add(text, BorderLayout.NORTH);
@@ -155,6 +235,13 @@ public class SudokuUi {
         resetframe.setVisible(true);
     }
     
+    /**
+     * Metodi lisää "Reset" ikkunalle "No" napin ja sen toimivuuden
+     *
+     * @param resetfram ikkuna
+     *
+     */
+
     private void addNoReset(JFrame resetframe) {
         JButton no = new JButton("No");
         resetframe.getContentPane().add(no, BorderLayout.EAST);
@@ -164,6 +251,14 @@ public class SudokuUi {
             }
         });
     }
+    
+    /**
+     * Metodi lisää "Reset" ikkunalle "Yes" napin ja sen toimivuuden
+     *
+     * @param resetframe ikkuna
+     * @param n Sudokun numero
+     *
+     */
 
     private void addYesReset(JFrame resetframe, int n) {
         JButton yes = new JButton("Yes");
@@ -180,6 +275,12 @@ public class SudokuUi {
             }
         });
     }
+    
+    /**
+     * Metodi luo kirjautumisikkunan
+     *
+     *
+     */
 
     private void createLogin() {
         JFrame login = new JFrame();
@@ -202,6 +303,13 @@ public class SudokuUi {
         login.setVisible(true);
     }
 
+    /**
+     * Metodi lisää kirjautumisikkunalle "Login" napin
+     *
+     * @param login ikkuna
+     * @param text1 textfield
+     *
+     */
     private void addLoginButton(JFrame login, JTextField text1) {
         JButton button = new JButton("Login");
         button.setFont(getFont(text1, 30));
@@ -213,12 +321,22 @@ public class SudokuUi {
         });
         login.getContentPane().add(button, BorderLayout.SOUTH);
     }
+    /**
+     * Metodi lisää "Login" napille toimivuuden
+     *
+     * @param text1 textfield
+     *
+     */
 
     private void loginButtonPressed(JTextField text1) {
         createMenu();
         // lisää toiminnallisuus
     }
 
+    /**
+     * Metodi luo päävalikkoikkunan
+     *
+     */
     private void createMenu() {
         JFrame menu = new JFrame();
         menu.setTitle("Main menu");
@@ -238,6 +356,14 @@ public class SudokuUi {
         menu.setLocationRelativeTo(null);
         menu.setVisible(true);
     }
+    /**
+     * Metodi lisää päävalikkoikkunalle sen napit
+     *
+     * @param menu ikkuna
+     * @param manupanel paneeli napeille
+     * @param text textfield
+     *
+     */
 
     private void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) {
         for (int i = 1; i < 6; i++) {
@@ -254,6 +380,12 @@ public class SudokuUi {
             });
         }
     }
+    /**
+     * Metodi lisää päävalikon napeille toimivuudet
+     *
+     * @param i Sudokun numero
+     *
+     */
 
     private void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
@@ -265,6 +397,14 @@ public class SudokuUi {
             sudokuDomain.setOpened(i - 1);
         }
     }
+    /**
+     * Metodi palauttaa fontin textfieldistä, kun sen kokoa muutetaan kertoimen verran
+     *
+     * @param text textfield
+     * @param a kerroin
+     *
+     * @return fontti koon muutoksen jälkeen
+     */
 
     public Font getFont(JTextField text, float a) {
         return text.getFont().deriveFont(a);
