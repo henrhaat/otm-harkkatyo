@@ -360,7 +360,7 @@ public class SudokuUi {
      * Metodi lisää päävalikkoikkunalle sen napit
      *
      * @param menu ikkuna
-     * @param manupanel paneeli napeille
+     * @param menupanel paneeli napeille
      * @param text textfield
      *
      */
