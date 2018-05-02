@@ -44,7 +44,7 @@ mvn package
 
 generoi hakemistoon *target*  suoritettavan jar-tiedoston *Sudoku-1.0-SNAPSHOT.jar*
 
-### Javadoc
+### JavaDoc
 
 JavaDoc generoidaan hakemistossa *harjoitustyo* komennolla
 
