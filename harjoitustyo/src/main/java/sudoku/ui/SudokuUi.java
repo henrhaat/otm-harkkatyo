@@ -29,7 +29,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void createGrid(int n) {
+    public void createGrid(int n) {
         sudokuDomain.getSudokuDao(n).getJFrame().setTitle("Sudoku");
         sudokuDomain.getSudokuDao(n).getJFrame().setSize(sudokuDomain.getSudokuDao(n).getSudokuWidth() + 150, sudokuDomain.getSudokuDao(n).getSudokuHeight());
         sudokuDomain.getSudokuDao(n).getSudokuPanel().setLayout(new GridLayout(3, 3, 5, 5));
@@ -43,7 +43,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void setNumbers(int n) {
+    public void setNumbers(int n) {
         for (int i = 0; i < 9; i++) {
             JPanel panel = new JPanel();
             panel.setLayout(new GridLayout(3, 3));
@@ -71,7 +71,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void setMask(int row, int col, int i, int n) {
+    public void setMask(int row, int col, int i, int n) {
         if (sudokuDomain.getSudokuDao(n).getShown()[3 * col + row + 9 * i]) {
             sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setHorizontalAlignment(JTextField.CENTER);
             sudokuDomain.getSudokuDao(n).getJTextField()[row][col].setEditable(false);
@@ -88,7 +88,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void createWindow(int n) {
+    public void createWindow(int n) {
         sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getSudokuPanel(), BorderLayout.CENTER);
         this.createRightPanel(n);
         sudokuDomain.getSudokuDao(n).getJFrame().setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -103,7 +103,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void createRightPanel(int n) {
+    public void createRightPanel(int n) {
         sudokuDomain.getSudokuDao(n).getRightPanel().setLayout(new BoxLayout(sudokuDomain.getSudokuDao(n).getRightPanel(), BoxLayout.Y_AXIS));
         sudokuDomain.getSudokuDao(n).container.add(sudokuDomain.getSudokuDao(n).getRightPanel(), BorderLayout.EAST);
         addCheckButton(n);
@@ -117,7 +117,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void addMenuButton(int n) {
+    public void addMenuButton(int n) {
         JButton button = new JButton("Main menu");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
@@ -133,7 +133,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void addCheckButton(int n) {
+    public void addCheckButton(int n) {
         JButton button = new JButton("Ready");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
@@ -149,7 +149,7 @@ public class SudokuUi {
      * @param n Sudokun numero
      *
      */
-    private void addResetButton(int n) {
+    public void addResetButton(int n) {
         JButton button = new JButton("Reset");
         sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
         button.addActionListener(new ActionListener() {
@@ -166,7 +166,7 @@ public class SudokuUi {
      *
      */
 
-    private void menuButtonPressed(int n) {
+    public void menuButtonPressed(int n) {
         sudokuDomain.getSudokuDao(n).getJFrame().setVisible(false);
         createMenu();
     }
@@ -177,7 +177,7 @@ public class SudokuUi {
      *
      */
 
-    private void checkButtonPressed(int n) {
+    public void checkButtonPressed(int n) {
         JFrame checkFrame = new JFrame();
         checkFrame.setTitle("Result");
         this.addOkButton(checkFrame);
@@ -202,7 +202,7 @@ public class SudokuUi {
      *
      */
 
-    private void addOkButton(JFrame checkFrame) {
+    public void addOkButton(JFrame checkFrame) {
         JButton button = new JButton("Ok");
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -218,7 +218,7 @@ public class SudokuUi {
      *
      */
 
-    private void resetButtonPressed(int n) {
+    public void resetButtonPressed(int n) {
         JFrame resetframe = new JFrame();
 
         JTextArea text = new JTextArea();
@@ -242,7 +242,7 @@ public class SudokuUi {
      *
      */
 
-    private void addNoReset(JFrame resetframe) {
+    public void addNoReset(JFrame resetframe) {
         JButton no = new JButton("No");
         resetframe.getContentPane().add(no, BorderLayout.EAST);
         no.addActionListener(new ActionListener() {
@@ -260,7 +260,7 @@ public class SudokuUi {
      *
      */
 
-    private void addYesReset(JFrame resetframe, int n) {
+    public void addYesReset(JFrame resetframe, int n) {
         JButton yes = new JButton("Yes");
         resetframe.getContentPane().add(yes, BorderLayout.WEST);
         yes.addActionListener(new ActionListener() {
@@ -282,7 +282,7 @@ public class SudokuUi {
      *
      */
 
-    private void createLogin() {
+    public void createLogin() {
         JFrame login = new JFrame();
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -310,7 +310,7 @@ public class SudokuUi {
      * @param text1 textfield
      *
      */
-    private void addLoginButton(JFrame login, JTextField text1) {
+    public void addLoginButton(JFrame login, JTextField text1) {
         JButton button = new JButton("Login");
         button.setFont(getFont(text1, 30));
         button.addActionListener(new ActionListener() {
@@ -328,7 +328,7 @@ public class SudokuUi {
      *
      */
 
-    private void loginButtonPressed(JTextField text1) {
+    public void loginButtonPressed(JTextField text1) {
         createMenu();
         // lisää toiminnallisuus
     }
@@ -337,7 +337,7 @@ public class SudokuUi {
      * Metodi luo päävalikkoikkunan
      *
      */
-    private void createMenu() {
+    public void createMenu() {
         JFrame menu = new JFrame();
         menu.setTitle("Main menu");
         menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -365,7 +365,7 @@ public class SudokuUi {
      *
      */
 
-    private void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) {
+    public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) {
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
             button.setText(i + "");
@@ -387,7 +387,7 @@ public class SudokuUi {
      *
      */
 
-    private void levelButtonPressed(int i) {
+    public void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
             sudokuDomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
         } else {
