@@ -15,6 +15,7 @@ Sovelluksella voi pelata sudokua. Sudoku on logiikkapeli, jossa tehtävänä on 
 ## Releaset
 
 [Viikko 5](https://github.com/henrhaat/otm-harkkatyo/releases/tag/viikko5)
+
 [Viikko 6](https://github.com/henrhaat/otm-harkkatyo/releases/tag/viikko6)
 
 ## Komentorivitoiminnot
