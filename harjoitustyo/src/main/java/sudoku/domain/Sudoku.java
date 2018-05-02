@@ -19,8 +19,6 @@ public class Sudoku {
     public List<SudokuDao> sudokulist;
     public Puzzle puzzle = new Puzzle();
     public Boolean[] opened = {false, false, false, false, false};
-    public Connection conn;
-    public String name;
 
     /**
      * Luokan konstruktori
@@ -35,12 +33,6 @@ public class Sudoku {
             SudokuDao sudoku = new SudokuDao(i);
             this.sudokulist.add(sudoku);
         }
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
-        } catch (SQLException ex) {
-            Logger.getLogger(Sudoku.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
     }
 
     /**
@@ -74,97 +66,5 @@ public class Sudoku {
 
     public boolean getOpened(int n) {
         return this.opened[n];
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Connection getConnection() {
-        return this.conn;
-    }
-
-    /**
-     * Metodi palautta true jos tämänhetkinen käyttäjä on läpäissyt Sudokun
-     * numero i
-     *
-     * @param i Sudokun numero
-     *
-     */
-    public boolean getCompleted(int i) throws SQLException {
-        int a = i + 1;
-        PreparedStatement stmt
-                = conn.prepareStatement("SELECT Completed" + a + " FROM User WHERE name = '" + name + "'");
-        ResultSet tulos = stmt.executeQuery();
-        tulos.next();
-
-        return tulos.getBoolean("Completed" + a);
-    }
-
-    /**
-     * Metodi asettaa Sudokun numero i suoritetuksi tämänhetkiselle käyttäjälle
-     *
-     * @param i Sudokun numero
-     *
-     */
-    public void setCompleted(int i) throws SQLException {
-        List<Boolean> list = new ArrayList<>();
-        for (int b = 0; b < 5; b++) {
-            if (b == i) {
-                list.add(true);
-            } else {
-                list.add(getCompleted(b));
-            }
-        }
-
-        PreparedStatement stmt
-                = conn.prepareStatement("DELETE FROM User WHERE name = ?");
-        stmt.setString(1, name);
-        stmt.executeUpdate();
-        PreparedStatement stmt1
-                = conn.prepareStatement("INSERT INTO User (name, completed1, completed2, completed3, completed4, completed5) "
-                        + "VALUES (?,?,?,?,?,?)");
-        stmt1.setString(1, name);
-        stmt1.setBoolean(2, list.get(0));
-        stmt1.setBoolean(3, list.get(1));
-        stmt1.setBoolean(4, list.get(2));
-        stmt1.setBoolean(5, list.get(3));
-        stmt1.setBoolean(6, list.get(4));
-        stmt1.executeUpdate();
-
-    }
-
-    /**
-     * Metodi tarkistaa tietokannasta, onko kyseinen käyttäjänimi jo käytössä ja
-     * palauttaa true, jos on käytössä ja false, jos ei ole käytössä
-     *
-     * @param name käyttäjänimi
-     *
-     */
-    public boolean checkIfNameExists(String name) throws SQLException {
-        PreparedStatement stmt
-                = conn.prepareStatement("SELECT name FROM User WHERE name = ?");
-        stmt.setString(1, name);
-        ResultSet tulos = stmt.executeQuery();
-        return tulos.next();
-    }
-
-    /**
-     * Metodi lisää käyttäjänimen tietokantaan
-     *
-     * @param name käyttäjänimi
-     *
-     */
-    public void addNameToDatabase(String name) throws SQLException {
-        PreparedStatement stmt
-                = conn.prepareStatement("INSERT INTO User (name, completed1, completed2, completed3, completed4, completed5) "
-                        + "VALUES (?,?,?,?,?,?)");
-        stmt.setString(1, name);
-        stmt.setBoolean(2, false);
-        stmt.setBoolean(3, false);
-        stmt.setBoolean(4, false);
-        stmt.setBoolean(5, false);
-        stmt.setBoolean(6, false);
-        stmt.executeUpdate();
-    }
+    }  
 }

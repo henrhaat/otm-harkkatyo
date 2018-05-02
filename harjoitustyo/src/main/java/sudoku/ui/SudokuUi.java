@@ -196,7 +196,7 @@ public class SudokuUi {
             jtext.setEditable(false);
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
             try {
-                sudokuDomain.setCompleted(n);
+                sudokuDomain.getSudokuDao(0).setCompleted(n);
                 
             } catch (SQLException ex) {
                 Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
@@ -345,9 +345,9 @@ public class SudokuUi {
      *
      */
     public void loginButtonPressed(JTextField text1) throws SQLException {
-        sudokuDomain.setName(text1.getText());
-        if (!sudokuDomain.checkIfNameExists(text1.getText())) {
-            sudokuDomain.addNameToDatabase(text1.getText());
+        sudokuDomain.getSudokuDao(0).setName(text1.getText());
+        if (!sudokuDomain.getSudokuDao(0).checkIfNameExists(text1.getText())) {
+            sudokuDomain.getSudokuDao(0).addNameToDatabase(text1.getText());
         }
         createMenu();
         // lisää toiminnallisuus
@@ -388,7 +388,7 @@ public class SudokuUi {
     public void addMenuPanelButtons(JFrame menu, JPanel menupanel, JTextField text) throws SQLException {
         for (int i = 1; i < 6; i++) {
             JButton button = new JButton();
-            if (sudokuDomain.getCompleted(i - 1)) {
+            if (sudokuDomain.getSudokuDao(0).getCompleted(i - 1)) {
                 button.setBackground(Color.GREEN);
             }
             button.setText(i + "");
