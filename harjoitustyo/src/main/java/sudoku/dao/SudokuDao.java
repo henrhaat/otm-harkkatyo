@@ -6,6 +6,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Luokka sisältää sudokuun tarvittavia muuttujia
+ */
 public class SudokuDao extends JPanel {
 
     public final JFrame window = new JFrame();
@@ -30,7 +33,7 @@ public class SudokuDao extends JPanel {
         this.shown = puzzle.getShown(n);
         this.numbersString = puzzle.getNumbersString(n);
     }
-    
+
     public String[] getNumbers() {
         return this.numbersString;
     }
@@ -42,7 +45,7 @@ public class SudokuDao extends JPanel {
     public JPanel getSudokuPanel() {
         return this.sudokuPanel;
     }
-    
+
     public JPanel getRightPanel() {
         return this.rightPanel;
     }
