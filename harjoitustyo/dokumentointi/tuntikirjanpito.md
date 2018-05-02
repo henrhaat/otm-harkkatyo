@@ -12,4 +12,5 @@ päivä | aika | mitä tein
 23.4. | 3 | Testikattavuus ja checkstyle parannuksia
 24.4. | 3 | Parantelin dokumentaatiota ja loin releasen
 1.5 | 1 | JavaDoc:in aloitus
- yht | 33 | 
+2.5 | 4 | Databasen mukaan otto
+ yht | 37 | 
