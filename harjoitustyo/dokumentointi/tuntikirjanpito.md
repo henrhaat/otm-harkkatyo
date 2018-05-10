@@ -13,4 +13,5 @@ päivä | aika | mitä tein
 24.4. | 3 | Parantelin dokumentaatiota ja loin releasen
 1.5 | 1 | JavaDoc:in aloitus
 2.5 | 4 | Databasen mukaan otto
- yht | 37 | 
+10.5 | 3 | Testien lisäily
+ yht | 40 | 
