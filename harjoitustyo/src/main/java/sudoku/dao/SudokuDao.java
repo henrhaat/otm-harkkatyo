@@ -4,15 +4,11 @@ import sudoku.domain.Puzzle;
 import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import sudoku.domain.Sudoku;
 
 /**
  * Luokka sisältää sudokuun tarvittavia muuttujia ja yhteyden tietokantaan
@@ -39,15 +35,11 @@ public class SudokuDao extends JPanel {
     public Connection conn;
     public String name;
 
-    public SudokuDao(int n) {
+    public SudokuDao(int n, Connection conn) {
         Puzzle puzzle = new Puzzle();
         this.shown = puzzle.getShown(n);
         this.numbersString = puzzle.getNumbersString(n);
-        try {
-            conn = DriverManager.getConnection("jdbc:sqlite:database.db");
-        } catch (SQLException ex) {
-            Logger.getLogger(Sudoku.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.conn = conn;
     }
 
     public String[] getNumbers() {

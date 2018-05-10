@@ -418,6 +418,7 @@ public class SudokuUi {
     public void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
             sudokuDomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
+            
         } else {
             createGrid(i - 1);
             setNumbers(i - 1);
@@ -442,6 +443,7 @@ public class SudokuUi {
     public static void main(String[] args) throws SQLException {
         SudokuUi su = new SudokuUi();
         su.createLogin();
+        
     }
 
 }

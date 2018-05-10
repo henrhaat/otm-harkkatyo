@@ -1,8 +1,12 @@
 package sudoku.domain;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sudoku.dao.SudokuDao;
 
 /**
@@ -16,6 +20,7 @@ public class Sudoku {
 
     /**
      * Luokan konstruktori
+     *
      * @throws java.sql.SQLException
      */
     public Sudoku() throws SQLException {
@@ -24,10 +29,16 @@ public class Sudoku {
 
     private void setUp() throws SQLException {
         this.sudokulist = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            SudokuDao sudoku = new SudokuDao(i);
+        try {
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            for (int i = 0; i < 5; i++) {
+            SudokuDao sudoku = new SudokuDao(i, conn);
             this.sudokulist.add(sudoku);
         }
+        } catch (SQLException ex) {
+            
+        }
+        
     }
 
     /**
@@ -61,5 +72,5 @@ public class Sudoku {
 
     public boolean getOpened(int n) {
         return this.opened[n];
-    }  
+    }
 }

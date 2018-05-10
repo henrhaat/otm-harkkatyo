@@ -1,11 +1,15 @@
 package sudoku;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.JTextField;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -19,12 +23,39 @@ public class SudokuTest {
     SudokuDao sudokuDao;
     Sudoku sudoku;
     Puzzle puzzle;
+    Connection conn;
+    String name;
 
     @Before
     public void setUp() throws SQLException {
-        sudokuDao = new SudokuDao(0);
+        conn = DriverManager.getConnection("jdbc:sqlite:test.db");
+        name = "Testimies";
+        sudokuDao = new SudokuDao(0, conn);
         sudoku = new Sudoku();
         puzzle = new Puzzle();
+        setUpDatabase();
+    }
+
+    @After
+    public void closeConnection() throws SQLException {
+        conn.close();
+    }
+
+    public void setUpDatabase() throws SQLException {
+        PreparedStatement stmt
+                = conn.prepareStatement("DELETE FROM User WHERE name = ?");
+        stmt.setString(1, name);
+        stmt.executeUpdate();
+        PreparedStatement stmt1
+                = conn.prepareStatement("INSERT INTO User (name, completed1, completed2, completed3, completed4, completed5) "
+                        + "VALUES (?,?,?,?,?,?)");
+        stmt1.setString(1, name);
+        stmt1.setBoolean(2, true);
+        stmt1.setBoolean(3, true);
+        stmt1.setBoolean(4, false);
+        stmt1.setBoolean(5, false);
+        stmt1.setBoolean(6, false);
+        stmt1.executeUpdate();
     }
 
     public void boxPassesRules(int n) {
@@ -133,13 +164,13 @@ public class SudokuTest {
 
     @Test
     public void getOpened() {
-        assertEquals(sudoku.getOpened(0), false);
+        assertFalse(sudoku.getOpened(0));
     }
 
     @Test
     public void setOpened() {
         sudoku.setOpened(2);
-        assertEquals(sudoku.opened[2], true);
+        assertTrue(sudoku.opened[2]);
     }
 
     @Test
@@ -150,7 +181,7 @@ public class SudokuTest {
             sudoku.getSudokuDao(0).jtfList.add(j);
         }
 
-        assertEquals(sudoku.checkIfCorrect(0), true);
+        assertTrue(sudoku.checkIfCorrect(0));
     }
 
     @Test
@@ -163,7 +194,53 @@ public class SudokuTest {
 
         sudoku.getSudokuDao(0).jtfList.get(30).setText(10 + "");
 
-        assertEquals(sudoku.checkIfCorrect(0), false);
+        assertFalse(sudoku.checkIfCorrect(0));
+    }
+
+    @Test
+    public void setName() {
+        sudokuDao.setName("Testimies");
+        assertEquals(sudokuDao.name, "Testimies");
+    }
+
+    @Test
+    public void getCompleted() throws SQLException {
+        sudokuDao.setName("Testimies");
+        assertTrue(sudokuDao.getCompleted(0));
+    }
+
+    @Test
+    public void setCompleted() throws SQLException {
+        sudokuDao.setName("Testimies");
+        assertFalse(sudokuDao.getCompleted(3));
+        sudokuDao.setCompleted(3);
+        assertTrue(sudokuDao.getCompleted(3));
+    }
+
+    @Test
+    public void getConnection() {
+        assertEquals(sudokuDao.conn, sudokuDao.getConnection());
+    }
+
+    @Test
+    public void checkIfNameExistsTrue() throws SQLException {
+        assertTrue(sudokuDao.checkIfNameExists(name));
+    }
+
+    @Test
+    public void checkIfNameExistsFalse() throws SQLException {
+        assertFalse(sudokuDao.checkIfNameExists("EiOlemassa"));
+    }
+
+    @Test
+    public void addNameToDatabase() throws SQLException {
+        String testname = "testname";
+        sudokuDao.addNameToDatabase(testname);
+        assertTrue(sudokuDao.checkIfNameExists("testname"));
+        PreparedStatement stmt
+                = conn.prepareStatement("DELETE FROM User WHERE name = ?");
+        stmt.setString(1, testname);
+        stmt.executeUpdate();
     }
 
 }
