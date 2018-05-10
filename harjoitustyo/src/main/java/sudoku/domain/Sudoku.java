@@ -5,8 +5,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import sudoku.dao.SudokuDao;
 
 /**
@@ -32,13 +30,13 @@ public class Sudoku {
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             for (int i = 0; i < 5; i++) {
-            SudokuDao sudoku = new SudokuDao(i, conn);
-            this.sudokulist.add(sudoku);
-        }
+                SudokuDao sudoku = new SudokuDao(i, conn);
+                this.sudokulist.add(sudoku);
+            }
         } catch (SQLException ex) {
             
         }
-        
+
     }
 
     /**
