@@ -12,6 +12,8 @@ Sovelluksella voi pelata sudokua. Sudoku on logiikkapeli, jossa tehtävänä on 
 
 [Arkkitehtuuri](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/arkkitehtuuri.md)
 
+[Testausdokumentti](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/testaus.md)
+
 ## Releaset
 
 [Viikko 5](https://github.com/henrhaat/otm-harkkatyo/releases/tag/viikko5)
