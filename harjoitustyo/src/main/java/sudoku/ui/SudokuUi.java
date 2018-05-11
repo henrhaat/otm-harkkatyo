@@ -327,8 +327,6 @@ public class SudokuUi {
 
     /**
      * Metodi luo kirjautumisikkunan
-     *
-     *
      * @throws java.sql.SQLException
      */
     public void createLogin() throws SQLException {
@@ -406,7 +404,6 @@ public class SudokuUi {
 
     /**
      * Metodi luo päävalikkoikkunan
-     *
      * @throws java.sql.SQLException
      */
     public void createMenu() throws SQLException {
@@ -481,7 +478,6 @@ public class SudokuUi {
      *
      * @param text textfield
      * @param a kerroin
-     *
      * @return fontti koon muutoksen jälkeen
      */
     public Font getFont(JTextField text, float a) {
