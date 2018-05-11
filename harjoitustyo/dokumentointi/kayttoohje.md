@@ -8,11 +8,34 @@ Pura lataamasi tiedosto tietokoneellasi tyhjään hakemistoon.
 
 ## Ohjelman käynnistäminen
 
-Mene hakemistoon, mihin purit *otm-harkkatyo-master.zip* tiedoston ja mene alihakemistoon *harjoitustyo*. Suorita komentorivillä komento
+Ohjelma käynnistetään komennolla
 ```
-mvn compile exec:java -Dexec.mainClass=sudoku.ui.SudokuUi
+java -jar sudoku.jar
 ```
-Sovellus käynnistyy kirjautumisnäkymään, jossa voit kirjautua sisään valitsemallasi käyttäjätunnuksella. Kirjauduttuasi sisään avautuu päävalikko, jossa on napit 1-5. Painamalla nappeja pääset viiteen eri sudokuun, joita voit yrittää ratkaista pelin sääntöjen mukaisesti. Kun olet omasta mielestäsi valmis jonkin sudokun kanssa, paina "Ready"-nappia. Jos sudoku on täytetty oikein, niin saat onnitteluikkunan ja voit siirtyä takaisin päävalikkoon painamalla "Main menu"-nappia ja voit yrittää seuraavaa sudokua.
+## Kirjautuminen
+
+Sovellus käynnistyy kirjautumisnäkymään:
+![login](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/5.PNG)
+
+Kirjautuminen onnistuu kirjoittamalla olemassaoleva tai uusi käyttäjätunnus syötekenttään ja painamalla _login_.
+
+## Päävalikko
+Kirjautumisen jälkeen aukeaa päävalikko:
+![menu](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/6.PNG)
+
+Päävalikossa on suoritetut tasot vihreällä ja suorittamatta olevat tasot sini-harmaina. Tasoa klikkaamalla pääsee sudokunäkymään.
+
+## Sudokunäkymä
+![sudoku](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/7.PNG)
+
+Sudokunäkymässä ruutuja voi täyttää alla olevien pelin sääntöjen mukaisesti. Kun käyttäjä on omasta mielestään valmis, voi hän klikata "Ready"-nappia. Ruudulle ilmestyvä ikkuna kertoo, onko ruudukko täytetty oikein vai ei.
+
+"Reset"-napista voi tyhjentää täytetyt ruudut, jos käyttäjä haluaa aloittaa täysin alusta.
+
+"Main menu"-napista pääsee takaisin päävalikkoon.
+
+"Hint"-nappia painamalla väärin täytetyt ruudut korostetaan punaisella värillä.
+
 
 ## Pelin säännöt
 
