@@ -2,9 +2,7 @@
 
 ## Ohjelman lataaminen tietokoneelle
 
-Lataa *otm-harkkatyo-master.zip* [tältä sivulta](https://github.com/henrhaat/otm-harkkatyo) oikeasta reunasta vihreästä napista `Clone or download` ja painamalla `Download ZIP.`
-
-Pura lataamasi tiedosto tietokoneellasi tyhjään hakemistoon.
+Lataa tiedostot [sudoku.jar](https://github.com/henrhaat/otm-harkkatyo/releases/tag/loppupalautus/sudoku.jar) ja [database.db](https://github.com/henrhaat/otm-harkkatyo/releases/tag/loppupalautus/database.db) ja aseta ne samaan hakemistoon.
 
 ## Ohjelman käynnistäminen
 
