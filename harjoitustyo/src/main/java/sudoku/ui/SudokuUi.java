@@ -107,7 +107,7 @@ public class SudokuUi {
      * Metodi luo Sudoku-ikkunalle oikean paneelin
      *
      * @param n Sudokun numero
-     *
+     * 
      */
     public void createRightPanel(int n) {
         sudokuDomain.getSudokuDao(n).getRightPanel().setLayout(new BoxLayout(sudokuDomain.getSudokuDao(n).getRightPanel(), BoxLayout.Y_AXIS));
@@ -458,7 +458,7 @@ public class SudokuUi {
      * Metodi lisää päävalikon napeille toimivuudet
      *
      * @param i Sudokun numero
-     *
+     * 
      */
     public void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
