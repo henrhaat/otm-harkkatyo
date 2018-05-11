@@ -7,7 +7,7 @@ Sovellus tulee olemaan Sudoku-peli, jossa on muutamia tasoja helposta vaikeaan
 ## Toiminnallisuus
 
 * Käyttäjä kirjautuu sovellukseen valitsemallaan käyttäjätunnuksella
- * Käyttäjätunnuksen pitää olla pituudeltaan vähintään kolme merkkiä
+  * Käyttäjätunnuksen pitää olla pituudeltaan vähintään kolme merkkiä
 * Käyttjänä näkee valikossa viisi tasoa joita käyttäjä voi klikata valitsemassaan järjestyksessä
   * Käyttäjän edellisiltä pelaamiskerroilta jo oikein täytetyt tasot näkyvät vihreänä, muut sini-harmaana.
   * Tasot ovat osin valmiiksi täytettyjä sudoku-taulukoita, jotka käyttäjä täyttää loppuun
