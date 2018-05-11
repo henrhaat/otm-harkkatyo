@@ -1,5 +1,6 @@
 package sudoku;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -108,7 +109,7 @@ public class SudokuTest {
 
     @Test
     public void getSudokuList() {
-        List<SudokuDao> list = sudoku.sudokulist;
+        List<SudokuDao> list = sudoku.sudokuList;
         assertEquals(list, sudoku.getSudokuDaoList());
     }
 
@@ -244,14 +245,40 @@ public class SudokuTest {
     }
     
     @Test
-    public void setUpList() throws SQLException {
-        List<Boolean> list = sudokuDao.setUpList(4);
-        List<Boolean> testList = new ArrayList<>();
-        testList.add(Boolean.TRUE);
-        testList.add(Boolean.TRUE);
-        testList.add(Boolean.FALSE);
-        testList.add(Boolean.FALSE);
-        testList.add(Boolean.TRUE);
-        assertEquals(testList, list);
+    public void setCompletedDatabase() throws SQLException {
+        sudokuDao.setName(name);
+        List<Boolean> list = new ArrayList<>();
+        list.add(Boolean.TRUE);
+        list.add(Boolean.TRUE);
+        list.add(Boolean.FALSE);
+        list.add(Boolean.FALSE);
+        list.add(Boolean.TRUE);
+        sudokuDao.setCompletedDatabase(list);
+        assertEquals(list.get(0), sudokuDao.getCompleted(0));
+        assertEquals(list.get(1), sudokuDao.getCompleted(1));
+        assertEquals(list.get(2), sudokuDao.getCompleted(2));
+        assertEquals(list.get(3), sudokuDao.getCompleted(3));
+        assertEquals(list.get(4), sudokuDao.getCompleted(4));
+    }
+    
+    @Test
+    public void hintRed() {
+        sudoku.getSudokuDao(0).jtfList.clear();
+        for (int i = 0; i < 81; i++) {
+            JTextField j = new JTextField("0");
+            sudoku.getSudokuDao(0).jtfList.add(j);
+        }
+        sudoku.hint(0);
+        assertEquals(Color.red, sudoku.getSudokuDao(0).jtfList.get(0).getBackground());
+    }
+    @Test
+    public void hintWhite() {
+        sudoku.getSudokuDao(0).jtfList.clear();
+        for (int i = 0; i < 81; i++) {
+            JTextField j = new JTextField("4");
+            sudoku.getSudokuDao(0).jtfList.add(j);
+        }
+        sudoku.hint(0);
+        assertEquals(Color.white, sudoku.getSudokuDao(0).jtfList.get(0).getBackground());
     }
 }

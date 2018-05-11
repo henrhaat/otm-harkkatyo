@@ -98,11 +98,9 @@ public class SudokuDao extends JPanel {
         int a = i + 1;
         PreparedStatement stmt
                 = conn.prepareStatement("SELECT Completed" + a + " FROM User WHERE name = '" + name + "'");
-        Boolean b;
-        try (ResultSet tulos = stmt.executeQuery()) {
-            tulos.next();
-            b = tulos.getBoolean("Completed" + a);
-        }
+        ResultSet tulos = stmt.executeQuery();
+        tulos.next();
+        Boolean b = tulos.getBoolean("Completed" + a);
         return b;
     }
 
@@ -114,7 +112,18 @@ public class SudokuDao extends JPanel {
      *
      */
     public void setCompleted(int i) throws SQLException {
-        List<Boolean> list = setUpList(i);
+        List<Boolean> list = new ArrayList<>();
+        for (int b = 0; b < 5; b++) {
+            if (b == i) {
+                list.add(true);
+            } else {
+                list.add(getCompleted(b));
+            }
+        }
+        setCompletedDatabase(list);
+    }
+    
+    public void setCompletedDatabase(List<Boolean> list) throws SQLException {
         PreparedStatement stmt
                 = conn.prepareStatement("DELETE FROM User WHERE name = ?");
         stmt.setString(1, name);
@@ -129,27 +138,8 @@ public class SudokuDao extends JPanel {
         stmt1.setBoolean(5, list.get(3));
         stmt1.setBoolean(6, list.get(4));
         stmt1.executeUpdate();
-    }
-    
-    /**
-     * Metodi alustaa listan käyttäjän suoritetuista tasoista
-     *
-     * @param i Sudokun numero
-     * @return lista suoritetuista tasoista
-     * @throws java.sql.SQLException
-     *
-     */
-    
-    public List setUpList(int i) throws SQLException {
-        List<Boolean> list = new ArrayList<>();
-        for (int b = 0; b < 5; b++) {
-            if (b == i) {
-                list.add(true);
-            } else {
-                list.add(getCompleted(b));
-            }
-        }
-        return list;
+        stmt.close();
+        stmt1.close();
     }
 
     /**

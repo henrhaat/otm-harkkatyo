@@ -193,15 +193,7 @@ public class SudokuUi {
         checkFrame.setTitle("Result");
         this.addOkButton(checkFrame);
         if (sudokuDomain.checkIfCorrect(n)) {
-            JTextArea jtext = new JTextArea("Correct!");;
-            jtext.setEditable(false);
-            checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
-            try {
-                sudokuDomain.getSudokuDao(0).setCompleted(n);
-
-            } catch (SQLException ex) {
-                Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            this.correct(checkFrame, n);
         } else {
             JTextArea jtext = new JTextArea("Some numbers are still wrong..");
             jtext.setEditable(false);
@@ -210,6 +202,22 @@ public class SudokuUi {
         checkFrame.pack();
         checkFrame.setLocationRelativeTo(null);
         checkFrame.setVisible(true);
+    }
+
+    /**
+     * Metodi luo "oikein" ikkunan
+     * @param frame ikkuna
+     * @param n Sudokun numero
+     */
+    public void correct(JFrame frame, int n) {
+        JTextArea jText = new JTextArea("Correct!");;
+        jText.setEditable(false);
+        frame.getContentPane().add(jText, BorderLayout.NORTH);
+        try {
+            sudokuDomain.getSudokuDao(0).setCompleted(n);
+        } catch (SQLException ex) {
+            Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -235,34 +243,34 @@ public class SudokuUi {
      *
      */
     public void resetButtonPressed(int n) {
-        JFrame resetframe = new JFrame();
+        JFrame resetFrame = new JFrame();
 
         JTextArea text = new JTextArea();
         text.setText("Are you sure you want to reset this puzzle?\nYou will lose your current progress");
         text.setEditable(false);
-        resetframe.setTitle("Reset");
+        resetFrame.setTitle("Reset");
 
-        this.addYesReset(resetframe, n);
-        this.addNoReset(resetframe);
-        resetframe.getContentPane().add(text, BorderLayout.NORTH);
+        this.addYesReset(resetFrame, n);
+        this.addNoReset(resetFrame);
+        resetFrame.getContentPane().add(text, BorderLayout.NORTH);
 
-        resetframe.pack();
-        resetframe.setLocationRelativeTo(null);
-        resetframe.setVisible(true);
+        resetFrame.pack();
+        resetFrame.setLocationRelativeTo(null);
+        resetFrame.setVisible(true);
     }
 
     /**
      * Metodi lisää "Reset" ikkunalle "No" napin ja sen toimivuuden
      *
-     * @param resetframe ikkuna
+     * @param resetFrame ikkuna
      *
      */
-    public void addNoReset(JFrame resetframe) {
+    public void addNoReset(JFrame resetFrame) {
         JButton no = new JButton("No");
-        resetframe.getContentPane().add(no, BorderLayout.EAST);
+        resetFrame.getContentPane().add(no, BorderLayout.EAST);
         no.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resetframe.setVisible(false);
+                resetFrame.setVisible(false);
             }
         });
     }
@@ -270,16 +278,16 @@ public class SudokuUi {
     /**
      * Metodi lisää "Reset" ikkunalle "Yes" napin ja sen toimivuuden
      *
-     * @param resetframe ikkuna
+     * @param resetFrame ikkuna
      * @param n Sudokun numero
      *
      */
-    public void addYesReset(JFrame resetframe, int n) {
+    public void addYesReset(JFrame resetFrame, int n) {
         JButton yes = new JButton("Yes");
-        resetframe.getContentPane().add(yes, BorderLayout.WEST);
+        resetFrame.getContentPane().add(yes, BorderLayout.WEST);
         yes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                resetframe.setVisible(false);
+                resetFrame.setVisible(false);
                 for (int i = 0; i < 81; i++) {
                     if (!sudokuDomain.getSudokuDao(n).getShown()[i]) {
                         sudokuDomain.getSudokuDao(n).getJTextFieldList().get(i).setText("");
@@ -290,6 +298,7 @@ public class SudokuUi {
             }
         });
     }
+
     /**
      * Metodi lisää Sudoku-ikkunan oikeaan paneeliin "Hint" napin
      *

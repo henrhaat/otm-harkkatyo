@@ -13,7 +13,7 @@ import sudoku.dao.SudokuDao;
  */
 public class Sudoku {
 
-    public List<SudokuDao> sudokulist;
+    public List<SudokuDao> sudokuList;
     public Puzzle puzzle = new Puzzle();
     public Boolean[] opened = {false, false, false, false, false};
 
@@ -27,12 +27,12 @@ public class Sudoku {
     }
 
     private void setUp() throws SQLException {
-        this.sudokulist = new ArrayList<>();
+        this.sudokuList = new ArrayList<>();
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             for (int i = 0; i < 5; i++) {
                 SudokuDao sudoku = new SudokuDao(i, conn);
-                this.sudokulist.add(sudoku);
+                this.sudokuList.add(sudoku);
             }
         } catch (SQLException ex) {
             
@@ -72,11 +72,11 @@ public class Sudoku {
     }
 
     public SudokuDao getSudokuDao(int n) {
-        return this.sudokulist.get(n);
+        return this.sudokuList.get(n);
     }
 
     public List<SudokuDao> getSudokuDaoList() {
-        return this.sudokulist;
+        return this.sudokuList;
     }
 
     public void setOpened(int n) {
