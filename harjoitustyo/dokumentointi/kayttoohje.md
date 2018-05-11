@@ -31,7 +31,7 @@ Päävalikossa on suoritetut tasot vihreällä ja suorittamatta olevat tasot sin
 
 ![sudoku](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/7.PNG)
 
-Sudokunäkymässä ruutuja voi täyttää alla olevien pelin sääntöjen mukaisesti. Kun käyttäjä on omasta mielestään valmis, voi hän klikata "Ready"-nappia. Ruudulle ilmestyvä ikkuna kertoo, onko ruudukko täytetty oikein vai ei.
+Sudokunäkymässä ruutuja voi täyttää alla olevien [pelin sääntöjen](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kayttoohje.md#pelin-s%C3%A4%C3%A4nn%C3%B6t) mukaisesti. Kun käyttäjä on omasta mielestään valmis, voi hän klikata "Ready"-nappia. Ruudulle ilmestyvä ikkuna kertoo, onko ruudukko täytetty oikein vai ei.
 
 "Reset"-napista voi tyhjentää täytetyt ruudut, jos käyttäjä haluaa aloittaa täysin alusta.
 
