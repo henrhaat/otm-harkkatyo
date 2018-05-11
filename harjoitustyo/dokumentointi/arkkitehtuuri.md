@@ -6,6 +6,8 @@ Ohjelman rakenne noudattelee kolmitasoista kerrosarkkitehtuuria, ja koodin pakka
 
 ![pakkaukset](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/1.png)
 
+Pakkaus _sudoku.ui_ sisältää Swing:llä toteutetun käyttöliittymän. Pakkaus _sudoku.domain_ sisältää sovelluslogiikan ja pakkaus _sudoku.dao_ vastaa tietojen pysyväistallennuksesta.
+
 Ohjelman luokkien suhdetta kuvaava luokkakaavio:
 
 ![luokkakaavio](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/2.png)
