@@ -2,7 +2,7 @@
 
 ## Sovelluksen tarkoitus
 
-Sovellus tulee olemaan Sudoku-peli, jossa on muutamia tasoja helposta vaikeaan
+Sovellus on Sudoku-peli, jossa on viisi tasoa helposta vaikeaan. Sovellus voi tallentaa usean käyttäjän edistymisen pelissä, mutta kerrallaan peliä voi pelata vain yksi käyttäjä, eli peli on yksinpeli.
 
 ## Toiminnallisuus
 
