@@ -14,4 +14,5 @@ päivä | aika | mitä tein
 1.5 | 1 | JavaDoc:in aloitus
 2.5 | 4 | Databasen mukaan otto
 10.5 | 3 | Testien lisäily
- yht | 40 | 
+11.5 | 5 | Viimeistelyä
+ yht | 45 | 
