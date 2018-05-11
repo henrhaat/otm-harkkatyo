@@ -115,6 +115,7 @@ public class SudokuUi {
         addCheckButton(n);
         addResetButton(n);
         addMenuButton(n);
+        addHintButton(n);
     }
 
     /**
@@ -197,7 +198,7 @@ public class SudokuUi {
             checkFrame.getContentPane().add(jtext, BorderLayout.NORTH);
             try {
                 sudokuDomain.getSudokuDao(0).setCompleted(n);
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -282,9 +283,29 @@ public class SudokuUi {
                 for (int i = 0; i < 81; i++) {
                     if (!sudokuDomain.getSudokuDao(n).getShown()[i]) {
                         sudokuDomain.getSudokuDao(n).getJTextFieldList().get(i).setText("");
+                        sudokuDomain.getSudokuDao(n).getJTextFieldList().get(i).setBackground(Color.white);
                     }
                 }
 
+            }
+        });
+    }
+
+    public void addHintButton(int n) {
+        JButton button = new JButton("Hint");
+        sudokuDomain.getSudokuDao(n).getRightPanel().add(button);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                sudokuDomain.hint(n);
+                JFrame hint = new JFrame();
+                hint.setTitle("Hint");
+                JTextField hintText = new JTextField("All wrongly filled cells are colored red");
+                hintText.setEditable(false);
+                hint.getContentPane().add(hintText, BorderLayout.NORTH);
+                addOkButton(hint);
+                hint.pack();
+                hint.setLocationRelativeTo(null);
+                hint.setVisible(true);
             }
         });
     }
@@ -345,24 +366,24 @@ public class SudokuUi {
      *
      */
     public void loginButtonPressed(JFrame login, JTextField text1) throws SQLException {
-        if (text1.getText().length()<3) {
+        if (text1.getText().length() < 3) {
             this.creteShortWarning();
         } else {
             sudokuDomain.getSudokuDao(0).setName(text1.getText());
-        if (!sudokuDomain.getSudokuDao(0).checkIfNameExists(text1.getText())) {
-            sudokuDomain.getSudokuDao(0).addNameToDatabase(text1.getText());
-        }
-        createMenu();
+            if (!sudokuDomain.getSudokuDao(0).checkIfNameExists(text1.getText())) {
+                sudokuDomain.getSudokuDao(0).addNameToDatabase(text1.getText());
+            }
+            createMenu();
             login.setVisible(false);
         }
         // lisää toiminnallisuus
     }
-    
+
     public void creteShortWarning() {
         JFrame warning = new JFrame();
         JTextField text = new JTextField("Username has to be at least 3 characters long");
         text.setEditable(false);
-        warning.getContentPane().add(text,BorderLayout.NORTH);
+        warning.getContentPane().add(text, BorderLayout.NORTH);
         this.addOkButton(warning);
         warning.pack();
         warning.setLocationRelativeTo(null);
@@ -431,7 +452,7 @@ public class SudokuUi {
     public void levelButtonPressed(int i) {
         if (sudokuDomain.getOpened(i - 1)) {
             sudokuDomain.getSudokuDao(i - 1).getJFrame().setVisible(true);
-            
+
         } else {
             createGrid(i - 1);
             setNumbers(i - 1);
@@ -456,7 +477,7 @@ public class SudokuUi {
     public static void main(String[] args) throws SQLException {
         SudokuUi su = new SudokuUi();
         su.createLogin();
-        
+
     }
 
 }

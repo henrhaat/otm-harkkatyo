@@ -1,10 +1,12 @@
 package sudoku.domain;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTextField;
 import sudoku.dao.SudokuDao;
 
 /**
@@ -15,6 +17,7 @@ public class Sudoku {
     public List<SudokuDao> sudokulist;
     public Puzzle puzzle = new Puzzle();
     public Boolean[] opened = {false, false, false, false, false};
+    public Color originalColor;
 
     /**
      * Luokan konstruktori
@@ -36,7 +39,6 @@ public class Sudoku {
         } catch (SQLException ex) {
             
         }
-
     }
 
     /**
@@ -54,6 +56,16 @@ public class Sudoku {
             }
         }
         return true;
+    }
+    
+    public void hint(int n) {
+        for (int i = 0; i < 81; i++) {
+            if (!(getSudokuDao(n).getJTextFieldList().get(i).getText()).equals(puzzle.getNumbersString(n)[i])) {
+                getSudokuDao(n).getJTextFieldList().get(i).setBackground(Color.red);
+            } else if (!puzzle.getShown(n)[i]){
+                getSudokuDao(n).getJTextFieldList().get(i).setBackground(Color.white);
+            }
+        }
     }
 
     public SudokuDao getSudokuDao(int n) {
