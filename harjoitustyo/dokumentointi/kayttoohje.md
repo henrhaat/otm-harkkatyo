@@ -15,17 +15,20 @@ java -jar sudoku.jar
 ## Kirjautuminen
 
 Sovellus käynnistyy kirjautumisnäkymään:
+
 ![login](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/5.PNG)
 
 Kirjautuminen onnistuu kirjoittamalla olemassaoleva tai uusi käyttäjätunnus syötekenttään ja painamalla _login_.
 
 ## Päävalikko
 Kirjautumisen jälkeen aukeaa päävalikko:
+
 ![menu](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/6.PNG)
 
 Päävalikossa on suoritetut tasot vihreällä ja suorittamatta olevat tasot sini-harmaina. Tasoa klikkaamalla pääsee sudokunäkymään.
 
 ## Sudokunäkymä
+
 ![sudoku](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/7.PNG)
 
 Sudokunäkymässä ruutuja voi täyttää alla olevien pelin sääntöjen mukaisesti. Kun käyttäjä on omasta mielestään valmis, voi hän klikata "Ready"-nappia. Ruudulle ilmestyvä ikkuna kertoo, onko ruudukko täytetty oikein vai ei.
