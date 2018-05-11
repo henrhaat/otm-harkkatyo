@@ -16,6 +16,15 @@ Ohjelman luokkien suhdetta kuvaava luokkakaavio:
 
 ![sekvenssi1](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/dokumentointi/kuvat/3.png)
 
+## Käyttöliittymä
+
+Käyttöliittymä sisältää kolme erillistä päänäkymää:
+* kirjautuminen
+* päävalikko
+* sudoku-näkymä
+
+Käyttöliittymä on rakennettu [sudoku.ui.SudokuUi](https://github.com/henrhaat/otm-harkkatyo/blob/master/harjoitustyo/src/main/java/sudoku/ui/SudokuUi.java) luokassa.
+
 ## Tietojen pysyväistallennus
 
 Pakkauksen sudoku.dao luokka _SudokuDao_ huolehtii tietojen tallentamisesta tiedostoon _database.db_.
