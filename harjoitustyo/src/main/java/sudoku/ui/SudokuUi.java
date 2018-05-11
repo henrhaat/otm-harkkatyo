@@ -3,7 +3,6 @@ package sudoku.ui;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -301,8 +300,6 @@ public class SudokuUi {
         login.setLocationRelativeTo(null);
         login.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         login.setTitle("Login");
-        JPanel lpanel = new JPanel();
-        lpanel.setLayout(new GridBagLayout());
         JTextField text = new JTextField("     Login or create new user     ");
         text.setEditable(false);
         JTextField text1 = new JTextField("");
@@ -330,11 +327,10 @@ public class SudokuUi {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 try {
-                    loginButtonPressed(text1);
+                    loginButtonPressed(login, text1);
                 } catch (SQLException ex) {
                     Logger.getLogger(SudokuUi.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                login.setVisible(false);
             }
         });
         login.getContentPane().add(button, BorderLayout.SOUTH);
@@ -343,17 +339,34 @@ public class SudokuUi {
     /**
      * Metodi lisää "Login" napille toimivuuden
      *
+     * @param login ikkuna
      * @param text1 textfield
      * @throws java.sql.SQLException
      *
      */
-    public void loginButtonPressed(JTextField text1) throws SQLException {
-        sudokuDomain.getSudokuDao(0).setName(text1.getText());
+    public void loginButtonPressed(JFrame login, JTextField text1) throws SQLException {
+        if (text1.getText().length()<3) {
+            this.creteShortWarning();
+        } else {
+            sudokuDomain.getSudokuDao(0).setName(text1.getText());
         if (!sudokuDomain.getSudokuDao(0).checkIfNameExists(text1.getText())) {
             sudokuDomain.getSudokuDao(0).addNameToDatabase(text1.getText());
         }
         createMenu();
+            login.setVisible(false);
+        }
         // lisää toiminnallisuus
+    }
+    
+    public void creteShortWarning() {
+        JFrame warning = new JFrame();
+        JTextField text = new JTextField("Username has to be at least 3 characters long");
+        text.setEditable(false);
+        warning.getContentPane().add(text,BorderLayout.NORTH);
+        this.addOkButton(warning);
+        warning.pack();
+        warning.setLocationRelativeTo(null);
+        warning.setVisible(true);
     }
 
     /**

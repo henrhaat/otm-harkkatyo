@@ -28,7 +28,7 @@ public class Sudoku {
     private void setUp() throws SQLException {
         this.sudokulist = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
             for (int i = 0; i < 5; i++) {
                 SudokuDao sudoku = new SudokuDao(i, conn);
                 this.sudokulist.add(sudoku);
