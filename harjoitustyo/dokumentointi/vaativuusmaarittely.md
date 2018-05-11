@@ -10,7 +10,7 @@ Sovellus on Sudoku-peli, jossa on viisi tasoa helposta vaikeaan. Sovellus voi ta
   * Käyttäjätunnuksen pitää olla pituudeltaan vähintään kolme merkkiä
   * Jos käyttäjätunnus on jo olemassa, kirjautuu käyttäjä sille tunnukselle
   * Jos käyttäjätunnusta ei ole vielä olemassa, syntyy uusi käyttäjätunnus ja käyttäjä kirjautuu sille
-* Käyttjänä näkee valikossa viisi tasoa joita käyttäjä voi klikata valitsemassaan järjestyksessä
+* Käyttäjä näkee valikossa viisi tasoa, joita käyttäjä voi klikata valitsemassaan järjestyksessä
   * Käyttäjän edellisiltä pelaamiskerroilta jo oikein täytetyt tasot näkyvät vihreänä, muut sini-harmaana.
   * Tasot ovat osin valmiiksi täytettyjä sudoku-taulukoita, jotka käyttäjä täyttää loppuun
   
