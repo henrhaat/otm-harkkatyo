@@ -242,5 +242,16 @@ public class SudokuTest {
         stmt.setString(1, testname);
         stmt.executeUpdate();
     }
-
+    
+    @Test
+    public void setUpList() throws SQLException {
+        List<Boolean> list = sudokuDao.setUpList(4);
+        List<Boolean> testList = new ArrayList<>();
+        testList.add(Boolean.TRUE);
+        testList.add(Boolean.TRUE);
+        testList.add(Boolean.FALSE);
+        testList.add(Boolean.FALSE);
+        testList.add(Boolean.TRUE);
+        assertEquals(testList, list);
+    }
 }

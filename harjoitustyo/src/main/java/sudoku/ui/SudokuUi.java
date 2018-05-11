@@ -290,6 +290,12 @@ public class SudokuUi {
             }
         });
     }
+    /**
+     * Metodi lisää Sudoku-ikkunan oikeaan paneeliin "Hint" napin
+     *
+     * @param n Sudokun numero
+     *
+     */
 
     public void addHintButton(int n) {
         JButton button = new JButton("Hint");
@@ -376,7 +382,6 @@ public class SudokuUi {
             createMenu();
             login.setVisible(false);
         }
-        // lisää toiminnallisuus
     }
 
     public void creteShortWarning() {

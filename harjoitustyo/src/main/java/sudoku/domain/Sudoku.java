@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTextField;
 import sudoku.dao.SudokuDao;
 
 /**
@@ -17,7 +16,6 @@ public class Sudoku {
     public List<SudokuDao> sudokulist;
     public Puzzle puzzle = new Puzzle();
     public Boolean[] opened = {false, false, false, false, false};
-    public Color originalColor;
 
     /**
      * Luokan konstruktori
@@ -31,7 +29,7 @@ public class Sudoku {
     private void setUp() throws SQLException {
         this.sudokulist = new ArrayList<>();
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:test.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:database.db");
             for (int i = 0; i < 5; i++) {
                 SudokuDao sudoku = new SudokuDao(i, conn);
                 this.sudokulist.add(sudoku);
@@ -58,11 +56,16 @@ public class Sudoku {
         return true;
     }
     
+    /**
+     * Metodi testaa, onko Sudoku täytetty oikein ja asettaa väärin täytettyjen solujen väriksi punaisen
+     *
+     * @param n Sudokun numero
+     */
     public void hint(int n) {
         for (int i = 0; i < 81; i++) {
             if (!(getSudokuDao(n).getJTextFieldList().get(i).getText()).equals(puzzle.getNumbersString(n)[i])) {
                 getSudokuDao(n).getJTextFieldList().get(i).setBackground(Color.red);
-            } else if (!puzzle.getShown(n)[i]){
+            } else if (!puzzle.getShown(n)[i]) {
                 getSudokuDao(n).getJTextFieldList().get(i).setBackground(Color.white);
             }
         }
